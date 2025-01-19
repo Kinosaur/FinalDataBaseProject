@@ -1,9 +1,120 @@
 /* Importing Google Fonts - Poppins */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: "Poppins", sans-serif;
+}
+
+/* Hero Section */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 50px;
+    background-color: beige;
+}
+
+.hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-image img {
+    width: 400px;
+    height: 300px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+}
+
+.hero-content {
+    flex: 1;
+    padding: 20px;
+    color: #333;
+    text-align: left;
+}
+
+.hero-content h1 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Facilities */
+.facilities {
+    padding: 40px 20px;
+    text-align: center;
+    background-color: #f2f1f1;
+}
+
+.facilities h1 {
+    font-size: 2.8rem;
+    color: #6a0e31;
+    margin-bottom: 2rem;
+}
+
+.facilities .facility-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 20px;
+    border: 1px solid #6a0e31;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    background-color: beige;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.facilities .facility-image {
+    width: 40%;
+    max-width: 300px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.facilities .facility-info {
+    flex: 1;
+    text-align: left;
+}
+
+.facilities .facility-info h2 {
+    font-size: 1.5rem;
+    color: #6a0e31;
+    margin-bottom: 0.5rem;
+}
+
+.facilities .facility-info p {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+.facilities .facility-details {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+.facilities .book-now {
+    padding: 10px 20px;
+    background-color: #6a0e31;
+    color: beige;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.facilities .book-now:hover {
+    color: #6a0e31;
+    background: beige;
 }
