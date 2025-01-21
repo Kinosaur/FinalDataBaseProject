@@ -8,6 +8,69 @@
     font-family: "Poppins", sans-serif;
 }
 
+/* Nav Bar */
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    width: 50px;
+    /* Adjust the size as needed */
+    height: auto;
+    object-fit: contain;
+    margin-right: 10px;
+    /* Adds spacing between the logo and website name */
+}
+
+.website-name {
+    font-size: 1.5rem;
+    /* Adjust the font size */
+    font-weight: bold;
+    color: #6a0e31;
+    /* Adjust the color */
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #fff;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #6a0e31;
+}
+
+.nav-buttons button {
+    background-color: #6a0e31;
+    border-radius: 8px;
+    height: 40px;
+    padding: 10px 20px;
+    color: beige;
+    transition: background-color 0.3s ease;
+}
+
+.nav-buttons button:hover {
+    cursor: pointer;
+    background-color: beige;
+    color: #6a0e31;
+}
+
 /* Hero Section */
 .hero {
     display: flex;
@@ -117,4 +180,29 @@
 .facilities .book-now:hover {
     color: #6a0e31;
     background: beige;
+}
+
+/* Footer */
+.footer {
+    background-color: #6a0e31;
+    color: beige;
+    text-align: center;
+    padding: 20px;
+}
+
+.footer p {
+    font-size: 1rem;
+}
+
+.footer a {
+    color: beige;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.footer-links {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
 }
