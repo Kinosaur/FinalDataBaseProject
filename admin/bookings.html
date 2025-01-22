@@ -4,14 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Facilities</title>
+    <title>Bookings</title>
     <!-- Linking Google fonts for icons -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
     <link rel="stylesheet" href="style_admin.css">
 </head>
 
-<body data-page="facilities">
+<body data-page="bookings">
     <aside class="sidebar">
         <header class="sidebar-header">
             <a href="#" class="header-logo">
@@ -22,7 +22,6 @@
                 <span class="material-symbols-rounded">chevron_left</span>
             </button>
         </header>
-        
 
         <nav class="sidebar-nav">
             <!-- Primary Top nav -->
@@ -101,31 +100,30 @@
         </nav>
     </aside>
 
-    <!-- Main content area -->
     <div class="main-content">
-        <h1>Facilities</h1>
+        <h1>Bookings</h1>
 
         <!-- Buttons -->
         <div class="buttons">
-            <button id="addBtn">Add</button>
+            <button id="acceptBtn">Accept</button>
             <button id="updateBtn">Update</button>
-            <button id="deleteBtn">Delete</button>
+            <button id="rejectBtn">Reject</button>
         </div>
 
         <!-- Table -->
-        <table id="facilitiesTable">
+        <table id="bookingsTable">
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Name</th>
-                    <th>Type</th>
-                    <th>Location</th>
-                    <th>Availability</th>
-                    <th>Price</th>
+                    <th>Customer Name</th>
+                    <th>Facility</th>
+                    <th>Book Date</th>
+                    <th>Time Slot</th>
+                    <th>Status</th>
                 </tr>
             </thead>
             <tbody>
-                <!-- Will be populated dynamically -->
+                <!-- Populated dynamically -->
             </tbody>
         </table>
     </div>

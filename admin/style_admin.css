@@ -10,6 +10,8 @@
 
 body {
     min-height: 100vh;
+    background-color: beige;
+    color: #333; /* Darker text color for better contrast */
 }
 
 .sidebar {
@@ -29,18 +31,39 @@ body {
 .sidebar-header {
     position: relative;
     display: flex;
-    align-items: center;
-    padding: 25px 20px;
-    justify-content: space-between;
+    align-items: center; /* Vertically align items */
+    justify-content: space-between; /* Spread items across available space */
+    padding: 0 20px; /* Adjust padding for better alignment */
+    height: 70px; /* Ensure consistent height */
+}
+
+.sidebar-header .header-logo {
+    display: flex;
+    align-items: center; /* Align logo and brand name vertically */
 }
 
 .sidebar-header .header-logo img {
     width: 46px;
     height: 46px;
-    display: block;
     object-fit: contain;
     border-radius: 50%;
 }
+
+/* Brand Name Styling */
+.sidebar-header .brand-name {
+    font-size: 1.2rem;
+    color: beige;
+    margin-left: 5px; /* Spacing between logo and text */
+    white-space: nowrap; /* Prevent text wrapping */
+    opacity: 1; /* Visible by default */
+    transition: opacity 0.4s ease; /* Smooth transition */
+}
+
+.sidebar.collapsed .sidebar-header .brand-name {
+    opacity: 0; /* Hide when collapsed */
+    pointer-events: none; /* Prevent interaction */
+}
+
 
 .sidebar-header .toggler {
     position: absolute;
@@ -106,6 +129,13 @@ body {
     color: #6A0E31;
 }
 
+.sidebar-nav .nav-link.active {
+    background-color: beige; /* Highlighted background color */
+    color: #6A0E31; /* Highlighted text color */
+    font-weight: bold; /* Optional: Make it stand out more */
+}
+
+
 .sidebar-nav .nav-link .nav-label {
     transition: opacity 0.4s ease;
 }
@@ -119,4 +149,94 @@ body {
     position: absolute;
     bottom: 30px;
     width: 100%;
+}
+
+/* Main Content */
+
+.main-content {
+    margin-left: 300px; /* Matches sidebar expanded width */
+    transition: margin-left 0.4s ease; /* Smooth transition */
+    padding: 20px;
+    background-color: beige; /* White background for main content */
+    border-radius: 8px; /* Optional: Slight rounding for aesthetics */
+    /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); Optional: Adds subtle shadow */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table,
+th,
+td {
+    border: 2px solid #ccc;
+}
+
+th,
+td {
+    padding: 12px;
+    text-align: left;
+}
+
+tr.selected {
+    background-color: #d0e7ff; /* Light blue background for selected row */
+    color: #000; /* Text color for readability */
+}
+
+
+.buttons {
+    display: flex;
+    justify-content: flex-end; /* Align buttons to the right */
+    gap: 20px;
+    margin-bottom: 10px;
+}
+
+.buttons button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#addBtn, #acceptBtn {
+    background-color: #28a745; /* Green for Add */
+    color: white;
+}
+
+#addBtn:hover {
+    background-color: #218838;
+    transform: scale(1.05);
+}
+
+#acceptBtn:hover {
+    background-color: #218838;
+    transform: scale(1.05);
+}
+
+#updateBtn {
+    background-color: #007bff; /* Blue for Update */
+    color: white;
+}
+
+#updateBtn:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+#deleteBtn, #rejectBtn {
+    background-color: #dc3545; /* Red for Delete */
+    color: white;
+}
+
+#deleteBtn:hover {
+    background-color: #c82333;
+    transform: scale(1.05);
+}
+#rejectBtn:hover {
+    background-color: #c82333;
+    transform: scale(1.05);
 }
