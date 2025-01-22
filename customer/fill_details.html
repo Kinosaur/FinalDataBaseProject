@@ -16,7 +16,6 @@
         <div class="logo-container">
             <img src="../images/Logo.png" alt="Active Heaven Logo" class="logo" />
             <span class="website-name">Active Heaven</span>
-            <h1>Contact Us</h1>
         </div>
         <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
@@ -29,54 +28,61 @@
 
     <h1>Fill Details</h1>
 
-    <form action="/submit-booking" method="post">
-        <!-- First Name and Last Name -->
-         <div>
+    <!-- Fill Details Form -->
+    <form action="payment.html" method="get">
+        <!-- First Name -->
+        <div>
             <label for="first-name">First Name</label>
-            <input type="text" id="frist-name" name="first_name" placeholder="e.g John" required>
-         </div>
-         <div>
+            <input type="text" id="first-name" name="first_name" placeholder="e.g John" required>
+        </div>
+
+        <!-- Last Name -->
+        <div>
             <label for="last-name">Last Name</label>
             <input type="text" id="last-name" name="last_name" placeholder="e.g Doe" required>
-         </div>
-         <!-- Type-Facilities -->
-         <div>
-            <label for="type-facilites">Type of Facilities</label>
-            <select id="type-facilites" name="type_facilities" required>
+        </div>
+
+        <!-- Type of Facilities -->
+        <div>
+            <label for="type-facilities">Type of Facilities</label>
+            <select id="type-facilities" name="type_facilities" required>
                 <option value="football-field">Football Field</option>
                 <option value="basketball-court">Basketball Court</option>
                 <option value="tennis-court">Tennis Court</option>
             </select>
-         </div>
+        </div>
+
         <!-- Location -->
-         <div>
+        <div>
             <label for="location">Location</label>
             <select id="location" name="location" required>
-                <option value="abac-field">abac Field</option>
+                <option value="abac-field">Abac Field</option>
                 <option value="xyz-court">XYZ Court</option>
                 <option value="alpha-court">Alpha Court</option>
             </select>
-         </div>
+        </div>
+
         <!-- Date -->
-         <div>
+        <div>
             <label for="date">Date</label>
             <input type="date" id="date" name="date" required>
         </div>
+
         <!-- Time -->
         <div>
             <label for="time">Time</label>
             <select id="time" name="time" required>
                 <option value="all-day">All Day</option>
-                <option value="morning">morning</option>
+                <option value="morning">Morning</option>
                 <option value="afternoon">Afternoon</option>
                 <option value="evening">Evening</option>
             </select>
-         </div>
-         <!-- Book -->
-         <div>
-            <button type="submit">Book</button>
-         </div>
+        </div>
 
+        <!-- Submit Button -->
+        <div>
+            <button type="submit">Book</button>
+        </div>
     </form>
 
 </body>

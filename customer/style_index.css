@@ -71,7 +71,7 @@
     color: #6a0e31;
 }
 
-/* Hero Section */
+/* Facilities */
 .hero {
     display: flex;
     align-items: center;
@@ -107,7 +107,6 @@
     color: #333;
 }
 
-/* Facilities */
 .facilities {
     padding: 40px 20px;
     text-align: center;
@@ -206,3 +205,273 @@
     justify-content: center;
     gap: 40px;
 }
+
+/* Membership Plan Section */
+.memberships h1 {
+    text-align: center;
+    color: #6a0e31;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.membership-plan {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: beige;
+    border: 1px solid #6a0e31;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 900px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.membership-plan img {
+    width: 200px;
+    height: 200px;
+    border-radius: 10px;
+}
+
+.membership-plan .details {
+    flex: 1;
+    margin-left: 20px;
+    color: #333;
+}
+
+.membership-plan h2 {
+    color: #6a0e31;
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.membership-plan p {
+    margin: 5px 0;
+    font-size: 1.1rem;
+}
+
+.membership-plan ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+}
+
+.membership-plan ul li {
+    margin-bottom: 5px;
+}
+
+.membership-plan button {
+    padding: 10px 20px;
+    background-color: #6a0e31;
+    color: beige;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.membership-plan button:hover {
+    background-color: beige;
+    color: #6a0e31;
+}
+
+/* Trainers Section */
+.trainers {
+    text-align: center;
+    margin: 0 auto;
+    padding: 40px 0;
+    background-color: #f9f9f9;
+}
+
+.trainers h1 {
+    text-align: center;
+    color: #6a0e31;
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+}
+
+.trainers .trainer-container {
+    display: flex;
+    justify-content: center; /* Centers the trainer cards horizontally */
+    gap: 20px; /* Adds spacing between trainer cards */
+    flex-wrap: wrap; /* Ensures responsiveness by wrapping on smaller screens */
+}
+
+.trainers .trainer-card {
+    width: 250px;
+    text-align: center;
+    background-color: beige;
+    border: 1px solid #6a0e31;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.trainers .trainer-card img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.trainers .trainer-card h3 {
+    color: #6a0e31;
+    font-size: 1.3rem;
+    margin-bottom: 5px;
+}
+
+.trainers .trainer-card p {
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+.trainers .social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 10px 0;
+}
+
+.trainers .social-icons a {
+    font-size: 1.5rem;
+    color: #6a0e31;
+    transition: color 0.3s ease;
+    text-decoration: none;
+}
+
+.trainers .social-icons a:hover {
+    color: beige;
+}
+
+/* Fill Details Form */
+form {
+    background-color: #ffffff;
+    width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    font-size: 2rem;
+    color: #333;
+    margin: 20px 0;
+}
+
+form div {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+form label {
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+form input,
+form select {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f8f8f8;
+    width: 100%;
+}
+
+form input:focus,
+form select:focus {
+    outline: none;
+    border-color: #6a0e31;
+    background-color: #fff;
+}
+
+form button {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #6a0e31;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #4a0b26;
+}
+
+body {
+    background-color: #f2f2f2; /* Light gray background for contrast */
+}
+
+form{
+    margin-top: 20px;
+}
+ 
+/* Contact Us Section */
+/* Container */
+.container {
+    text-align: center;
+    font-family: "Poppins", sans-serif;
+}
+
+/* Title and Description */
+.help-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #000;
+    margin-bottom: 10px;
+}
+
+.help-description {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.contact-us {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+.contact-option {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background-color: #ffff;
+    padding: 15px 20px;
+    border-radius: 25px;
+    width: 400px;
+    justify-content: flex-start;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-family: "Poppins", sans-serif;
+}
+
+.contact-icon {
+    font-size: 1.5rem;
+    color: #4a0b26; /* Purple color for icons */
+}
+
+.contact-option p {
+    font-size: 1rem;
+    color: #000;
+    margin: 0;
+}
+
+body{
+    background-color: beige;
+}
+ 
