@@ -32,6 +32,8 @@ document.addEventListener("DOMContentLoaded", () => {
         initializeFieldsPage();
     } else if (currentPageDataset === "admins") {
         initializeAdminsPage();
+    } else if (currentPageDataset === "customers") {
+        initializeCustomersPage();
     }
 });
 
@@ -222,6 +224,85 @@ function initializeAdminsPage() {
             }
         } else {
             alert("Please select an admin to delete.");
+        }
+    });
+}
+
+function initializeCustomersPage() {
+    console.log("Initializing Customers Page...");
+    const tableBody = document.querySelector("#customersTable tbody");
+
+    if (!tableBody) {
+        console.error("Customers table body not found!");
+        return;
+    }
+
+    // Dummy Data for Customers
+    const dummyCustomers = [
+        { id: 1, name: "Alice Johnson", phone: "123-456-7890", email: "alice@example.com", plan: "Yearly", status: "Active" },
+        { id: 2, name: "Bob Smith", phone: "987-654-3210", email: "bob@example.com", plan: "Yearly", status: "Active" },
+        { id: 3, name: "Charlie Brown", phone: "555-555-5555", email: "charlie@example.com", plan: "Monthly", status: "Inactive" },
+    ];
+
+    // Populate the table with dummy data
+    dummyCustomers.forEach((customer) => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+            <td>${customer.id}</td>
+            <td>${customer.name}</td>
+            <td>${customer.phone}</td>
+            <td>${customer.email}</td>
+            <td>${customer.plan}</td>
+            <td>${customer.status}</td>
+        `;
+        tableBody.appendChild(row);
+    });
+
+    // Add row selection functionality
+    tableBody.addEventListener("click", (event) => {
+        const rows = tableBody.querySelectorAll("tr");
+        rows.forEach((row) => row.classList.remove("selected"));
+        const selectedRow = event.target.closest("tr");
+        if (selectedRow) {
+            selectedRow.classList.add("selected");
+        }
+    });
+
+    // Add button functionality
+    document.querySelector("#addBtn").addEventListener("click", () => {
+        alert("This is just a test: Add functionality not implemented yet.");
+    });
+
+    document.querySelector("#updateBtn").addEventListener("click", () => {
+        const selectedRow = document.querySelector("tr.selected");
+        if (selectedRow) {
+            const name = selectedRow.cells[1].textContent; // Assuming Name is in the second column
+            const currentStatus = selectedRow.cells[5].textContent; // Assuming Status is in the sixth column
+            const newStatus = prompt(
+                `Update status for ${name} (current status: ${currentStatus}):\nEnter "Active" or "Inactive":`
+            );
+            if (newStatus && (newStatus === "Active" || newStatus === "Inactive")) {
+                selectedRow.cells[5].textContent = newStatus; // Update the status in the table
+                alert(`Customer ${name}'s status has been updated to ${newStatus}.`);
+            } else if (newStatus) {
+                alert("Invalid status entered. Please try again.");
+            }
+        } else {
+            alert("Please select a customer to update.");
+        }
+    });
+
+    document.querySelector("#deleteBtn").addEventListener("click", () => {
+        const selectedRow = document.querySelector("tr.selected");
+        if (selectedRow) {
+            const name = selectedRow.cells[1].textContent; // Assuming Name is in the second column
+            const confirmDelete = confirm(`Are you sure you want to delete customer: ${name}?`);
+            if (confirmDelete) {
+                selectedRow.remove(); // Remove the row from the table
+                alert(`Customer ${name} has been deleted.`);
+            }
+        } else {
+            alert("Please select a customer to delete.");
         }
     });
 }
