@@ -34,6 +34,8 @@ document.addEventListener("DOMContentLoaded", () => {
         initializeAdminsPage();
     } else if (currentPageDataset === "customers") {
         initializeCustomersPage();
+    } else if (currentPageDataset === "trainers") {
+        initializeTrainersPage();
     }
 });
 
@@ -171,9 +173,9 @@ function initializeAdminsPage() {
 
     // Dummy Data for Admins
     const dummyAdmins = [
-        { id: 1, name: "Alice Johnson", phone: "123-456-7890", email: "alice@example.com" },
-        { id: 2, name: "Bob Smith", phone: "987-654-3210", email: "bob@example.com" },
-        { id: 3, name: "Charlie Brown", phone: "555-555-5555", email: "charlie@example.com" },
+        { id: 1, name: "Myat Bhone Pyae", phone: "123-456-7890", email: "knox@example.com" },
+        { id: 2, name: "Thit Lwin", phone: "987-654-3210", email: "jhon@example.com" },
+        { id: 3, name: "Kaung Khant Lin", phone: "06-34070213", email: "kino@example.com" },
     ];
 
     // Populate the table with dummy data
@@ -303,6 +305,74 @@ function initializeCustomersPage() {
             }
         } else {
             alert("Please select a customer to delete.");
+        }
+    });
+}
+
+function initializeTrainersPage() {
+    console.log("Initializing Trainers Page...");
+    const tableBody = document.querySelector("#trainersTable tbody");
+
+    if (!tableBody) {
+        console.error("Trainers table body not found!");
+        return;
+    }
+
+    // Dummy Data for Trainers
+    const dummyTrainers = [
+        { id: 1, name: "Alice Johnson", phone: "123-456-7890", email: "alice@example.com" },
+        { id: 2, name: "Bob Smith", phone: "987-654-3210", email: "bob@example.com" },
+        { id: 3, name: "Charlie Brown", phone: "555-555-5555", email: "charlie@example.com" },
+    ];
+
+    // Populate the table with dummy data
+    dummyTrainers.forEach((trainer) => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+            <td>${trainer.id}</td>
+            <td>${trainer.name}</td>
+            <td>${trainer.phone}</td>
+            <td>${trainer.email}</td>
+        `;
+        tableBody.appendChild(row);
+    });
+
+    // Add row selection functionality
+    tableBody.addEventListener("click", (event) => {
+        const rows = tableBody.querySelectorAll("tr");
+        rows.forEach((row) => row.classList.remove("selected"));
+        const selectedRow = event.target.closest("tr");
+        if (selectedRow) {
+            selectedRow.classList.add("selected");
+        }
+    });
+
+    // Add button functionality
+    document.querySelector("#addBtn").addEventListener("click", () => {
+        alert("This is just a test: Add functionality not implemented yet.");
+    });
+
+    document.querySelector("#updateBtn").addEventListener("click", () => {
+        const selectedRow = document.querySelector("tr.selected");
+        if (selectedRow) {
+            const name = selectedRow.cells[1].textContent;
+            alert(`Update action for trainer: ${name}`);
+        } else {
+            alert("Please select an trainer to update.");
+        }
+    });
+
+    document.querySelector("#deleteBtn").addEventListener("click", () => {
+        const selectedRow = document.querySelector("tr.selected");
+        if (selectedRow) {
+            const name = selectedRow.cells[1].textContent;
+            const confirmDelete = confirm(`Are you sure you want to delete trainer: ${name}?`);
+            if (confirmDelete) {
+                selectedRow.remove();
+                alert(`Trainer ${name} has been deleted.`);
+            }
+        } else {
+            alert("Please select an trainer to delete.");
         }
     });
 }
