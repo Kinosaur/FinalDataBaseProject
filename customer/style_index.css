@@ -72,6 +72,35 @@
 }
 
 /* Facilities */
+
+.view_facilities button {
+    text-align: center;
+    padding: 10px 20px;
+    background-color: #6a0e31;
+    color: beige;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.view_facilities button:hover {
+    background-color: beige;
+    color: #6a0e31;
+}
+
+/* Centering the Button */
+.view_facilities {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.view-facilities {
+    text-decoration: none;
+}
+
 .hero {
     display: flex;
     align-items: center;
@@ -276,6 +305,24 @@
     color: #6a0e31;
 }
 
+.time_table button {
+    text-align: center;
+    padding: 10px 20px;
+    background-color: #6a0e31;
+    color: beige;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.time_table button:hover {
+    background-color: beige;
+    color: #6a0e31;
+}
+
+
 /* Trainers Section */
 .trainers {
     text-align: center;
@@ -473,5 +520,234 @@ form{
 
 body{
     background-color: beige;
+}
+ 
+/* payment-info */
+/* Payment Container */
+.payment-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.page-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Payment Wrapper */
+.payment-wrapper {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    width: 90%;
+    max-width: 1200px;
+}
+
+/* Left Section: PromptPay QR */
+.payment-left {
+    flex: 1;
+    border: 1px solid #7a1b45;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    background-color: white;
+}
+
+.payment-left .section-title {
+    font-size: 1.5rem;
+    color: #7a1b45;
+    margin-bottom: 10px;
+}
+
+.instructions {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.promptpay-logo img {
+    width: 150px;
+    margin: 10px 0;
+}
+
+.qr-container img {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 15px;
+}
+
+.download-btn {
+    padding: 10px 15px;
+    font-size: 1rem;
+    background-color: #7a1b45;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-bottom: 10px;
+}
+
+.download-btn i {
+    margin-right: 5px;
+}
+
+.download-btn:hover {
+    background-color: #7a1b45;
+}
+
+.extra-info {
+    font-size: 0.9rem;
+    color: #777;
+}
+
+/* Right Section: Transaction Details */
+.payment-right {
+    flex: 1;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: white;
+}
+
+.payment-right .section-title {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.amount {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #7a1b45;
+    margin-bottom: 20px;
+}
+
+.transaction-details {
+    width: 100%;
+    margin-top: 10px;
+    border-collapse: collapse;
+}
+
+.transaction-details td {
+    padding: 8px;
+    font-size: 0.9rem;
+    color: #555;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.transaction-details td:first-child {
+    font-weight: bold;
+    color: #333;
+}
+
+.back-btn {
+    margin-top: 20px;
+    padding: 10px 15px;
+    font-size: 1rem;
+    background-color: #7a1b45;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%;
+}
+
+.back-btn:hover {
+    background-color: #7a1b45;
+}
+/* Time table */
+
+.timetable-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Time Header Styling */
+.time-header {
+    display: grid;
+    grid-template-columns: 1fr repeat(7, 1fr);
+    margin-bottom: 10px;
+}
+
+
+.time-slot {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1rem;
+    color: #555;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 10px;
+}
+
+/* Timetable Grid */
+.timetable {
+    display: grid;
+    gap: 10px;
+}
+
+.day-row {
+    display: grid;
+    grid-template-columns: 1fr repeat(7, 1fr);
+    gap: 10px;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 10px 0;
+}
+
+/* Day Slot Styling */
+.day-slot {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #7a1b45;
+    text-align: center;
+    padding: 10px 0;
+    border-right: 2px solid #ddd;
+}
+
+/* Class Box Styling */
+.class-box {
+    padding: 10px;
+    text-align: center;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+/* Color Coding */
+.green {
+    background-color: #4caf50;
+}
+
+.red {
+    background-color: #f44336;
+}
+
+.gray {
+    background-color: #9e9e9e;
+}
+
+.yellow {
+    background-color: #ffeb3b;
+    color: #000;
+}
+
+.purple {
+    background-color: #9c27b0;
+}
+
+.blue {
+    background-color: #2196f3;
+}
+
+.orange {
+    background-color: #ff9800;
 }
  
