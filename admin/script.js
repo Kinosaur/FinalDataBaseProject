@@ -36,8 +36,34 @@ document.addEventListener("DOMContentLoaded", () => {
         initializeCustomersPage();
     } else if (currentPageDataset === "trainers") {
         initializeTrainersPage();
+    } else if (currentPageDataset === "dashboard") {
+        initializeDashboardPage();
+    } else if (currentPageDataset === "schedule") {
+        initializeSchedulePage();
     }
 });
+
+const dummyData = {
+    revenue: 50000,
+    activeMemberships: 120,
+    totalBookings: 45,
+    activeTrainers: 8,
+    bookings: [
+        { id: 1, customer: "John Doe", field: "Gym", date: "2025-01-25", time: "10:00 AM - 11:00 AM", status: "Pending" },
+        { id: 2, customer: "Jane Smith", field: "Swimming Pool", date: "2025-01-26", time: "1:00 PM - 2:00 PM", status: "Approved" },
+        { id: 3, customer: "Mike Johnson", field: "Conference Room", date: "2025-01-27", time: "3:00 PM - 4:00 PM", status: "Rejected" },
+    ],
+    fields: [
+        { id: 1, name: "Gym", type: "Fitness", location: "Building A", availability: "Available", price: "$50/hr" },
+        { id: 2, name: "Swimming Pool", type: "Leisure", location: "Building B", availability: "Unavailable", price: "$30/hr" },
+        { id: 3, name: "Conference Room", type: "Business", location: "Building C", availability: "Available", price: "$100/hr" },
+    ],
+    trainers: [
+        { id: 1, name: "Alice Johnson", phone: "123-456-7890", email: "alice@example.com" },
+        { id: 2, name: "Bob Smith", phone: "987-654-3210", email: "bob@example.com" },
+        { id: 3, name: "Charlie Brown", phone: "555-555-5555", email: "charlie@example.com" },
+    ],
+};
 
 
 function initializeBookingsPage() {
@@ -49,13 +75,7 @@ function initializeBookingsPage() {
         return;
     }
 
-    const dummyBookings = [
-        { id: 1, customer: "John Doe", field: "Gym", date: "2025-01-25", time: "10:00 AM - 11:00 AM", status: "Pending" },
-        { id: 2, customer: "Jane Smith", field: "Swimming Pool", date: "2025-01-26", time: "1:00 PM - 2:00 PM", status: "Approved" },
-        { id: 3, customer: "Mike Johnson", field: "Conference Room", date: "2025-01-27", time: "3:00 PM - 4:00 PM", status: "Rejected" },
-    ];
-
-    dummyBookings.forEach((booking) => {
+    dummyData.bookings.forEach((booking) => {
         const row = document.createElement("tr");
         row.innerHTML = `
             <td>${booking.id}</td>
@@ -102,14 +122,7 @@ function initializeFieldsPage() {
     }
 
     // Dummy Data for Fields
-    const dummyFields = [
-        { id: 1, name: "Gym", type: "Fitness", location: "Building A", availability: "Available", price: "$50/hr" },
-        { id: 2, name: "Swimming Pool", type: "Leisure", location: "Building B", availability: "Unavailable", price: "$30/hr" },
-        { id: 3, name: "Conference Room", type: "Business", location: "Building C", availability: "Available", price: "$100/hr" },
-    ];
-
-    // Populate the table with dummy data
-    dummyFields.forEach((field) => {
+    dummyData.fields.forEach(field => {
         const row = document.createElement("tr");
         row.innerHTML = `
             <td>${field.id}</td>
@@ -375,4 +388,118 @@ function initializeTrainersPage() {
             alert("Please select an trainer to delete.");
         }
     });
+}
+
+function initializeDashboardPage() {
+    // Populate Metrics
+    document.querySelectorAll(".card")[0].textContent = `Total Revenue: $${dummyData.revenue}`;
+    document.querySelectorAll(".card")[1].textContent = `Active Memberships: ${dummyData.activeMemberships}`;
+    document.querySelectorAll(".card")[2].textContent = `Total Bookings: ${dummyData.totalBookings}`;
+    document.querySelectorAll(".card")[3].textContent = `Active Trainers: ${dummyData.activeTrainers}`;
+
+    // Populate Bookings Table
+    const tableBody = document.getElementById("booking-table");
+    dummyData.bookings.forEach(booking => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+            <td>${booking.customer}</td>
+            <td>${booking.field}</td>
+            <td>${booking.date}</td>
+            <td>${booking.status}</td>
+        `;
+        tableBody.appendChild(row);
+    });
+
+    // Generate Membership Pie Chart
+    const ctx1 = document.getElementById('membershipChart').getContext('2d');
+    new Chart(ctx1, {
+        type: 'pie',
+        data: {
+            labels: ['Monthly', 'Yearly'],
+            datasets: [{
+                data: [80, 40],
+                backgroundColor: ['#FF6384', '#36A2EB'],
+            }]
+        },
+    });
+
+    // Generate Field Usage Bar Chart
+    const ctx2 = document.getElementById('fieldUsageChart').getContext('2d');
+    new Chart(ctx2, {
+        type: 'bar',
+        data: {
+            labels: dummyData.fields.map(field => field.name),
+            datasets: [{
+                label: 'Bookings',
+                data: [12, 7, 5], // Dummy booking data
+                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
+            }]
+        },
+    });
+}
+
+function initializeSchedulePage() {
+    const trainers = ["John Doe", "Jane Smith", "Michael Brown"];
+    const scheduleTableBody = document.getElementById("scheduleTableBody");
+
+    // Check if table body exists
+    if (!scheduleTableBody) {
+        console.error("Schedule table body not found!");
+        return;
+    }
+
+    // Populate the schedule table
+    trainers.forEach((trainer) => {
+        const row = document.createElement("tr");
+
+        // Add trainer name
+        const trainerCell = document.createElement("td");
+        trainerCell.textContent = trainer;
+        row.appendChild(trainerCell);
+
+        // Add schedule cells for each day
+        for (let i = 0; i < 6; i++) {
+            const cell = document.createElement("td");
+            cell.classList.add("available"); // Default class for availability
+            cell.textContent = "Available";
+            cell.addEventListener("click", () => toggleSlot(cell));
+            row.appendChild(cell);
+        }
+
+        scheduleTableBody.appendChild(row);
+    });
+
+    // Toggle slot availability between "Available" and "Unavailable"
+    function toggleSlot(cell) {
+        if (cell.classList.contains("available")) {
+            cell.classList.remove("available");
+            cell.classList.add("unavailable");
+            cell.textContent = "Unavailable";
+        } else {
+            cell.classList.remove("unavailable");
+            cell.classList.add("available");
+            cell.textContent = "Available";
+        }
+    }
+
+    // Save schedule
+    const saveButton = document.getElementById("saveScheduleBtn");
+    if (saveButton) {
+        saveButton.addEventListener("click", () => {
+            const schedule = [];
+            scheduleTableBody.querySelectorAll("tr").forEach((row) => {
+                const trainerName = row.querySelector("td").textContent;
+                const days = Array.from(row.querySelectorAll("td"))
+                    .slice(1)
+                    .map((cell) => ({
+                        day: cell.cellIndex, // Day index (1-6)
+                        status: cell.textContent,
+                    }));
+                schedule.push({ trainer: trainerName, schedule: days });
+            });
+
+            console.log("Schedule saved:", schedule);
+            alert("Schedule saved successfully!");
+        });
+    }
 }
