@@ -1,95 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Active Heaven - Sports Facility Booking</title>
-    <link rel="stylesheet" href="style_index.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-</head>
+    <link rel="stylesheet" href="style_index.css" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+  </head>
 
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="logo-container">
+        <img src="../images/Logo.png" alt="Active Heaven Logo" class="logo" />
+        <span class="website-name">Active Heaven</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="memberships.html">Memberships</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </nav>
 
-        <body>
-            <!-- Navbar -->
-            <nav class="navbar">
-                <div class="logo-container">
-                    <img src="../images/Logo.png" alt="Active Heaven Logo" class="logo" />
-                    <span class="website-name">Active Heaven</span>
-                </div>
-                <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="memberships.html">Memberships</a></li>
-                    <li><a href="contact.html">Contact Us</a></li>
-                </ul>
-            </nav>
+    <div class="timetable-container">
+      <h1>Weekly Timetable</h1>
+      <h2>9.00 - 20.00. Lunch time - 12.00 - 13.00</h2>
 
-            <div class="timetable-container">
-                <h1>Weekly Timetable</h1>
-                <div class="time-header">
-                    <div class="empty-slot"></div>
-                    <div class="time-slot">09:00</div>
-                    <div class="time-slot">10:30</div>
-                    <div class="time-slot">12:00</div>
-                    <div class="time-slot">13:30</div>
-                    <div class="time-slot">15:00</div>
-                    <div class="time-slot">16:30</div>
-                    <div class="time-slot">18:00</div>
-                </div>
-
-                <!-- Timetable Rows -->
-                <div class="timetable">
-                    <!-- Monday -->
-                    <div class="day-row">
-                        <div class="day-slot">MON</div>
-                        <div class="class-box purple" style="grid-column: 2 / span 2;">
-                            Darrel Steward
-        <small>(Fitness and Body)</small>
-                        </div>
-                        <div class="class-box gray" style="grid-column: 5 / span 2;">
-                            John
-        <small>(Fitness and Body)</small>
-                        </div>
-                    </div>
-
-                    <!-- Tuesday -->
-                    <div class="day-row">
-                        <div class="day-slot">TUE</div>
-                        <div class="class-box blue" style="grid-column: 3 / span 2;">
-                            Jessica
-        <small>(Fitness and Body)</small>
-                        </div>
-                        <div class="class-box gray" style="grid-column: 5 / span 2;">
-                            John
-        <small>(Fitness and Body)</small>
-                        </div>
-                    </div>
-
-                    <!-- Wednesday -->
-                    <div class="day-row">
-                        <div class="day-slot">WED</div>
-                        <div class="class-box blue" style="grid-column: 5 / span 2;">
-                            Jessica
-        <small>(Fitness and Body)</small>
-                        </div>
-                    </div>
-
-                    <!-- Friday -->
-                    <div class="day-row">
-                        <div class="day-slot">FRI</div>
-                        <div class="class-box purple" style="grid-column: 2 / span 2;">
-                            Darrel Steward
-        <small>(Fitness and Body)</small>
-                        </div>
-                        <div class="class-box gray" style="grid-column: 5 / span 2;">
-                            John
-        <small>(Fitness and Body)</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-</body>
-
+      <div class="timetable">
+        <!-- Days -->
+        <div class="day-row">
+          <div class="day-slot">MON</div>
+          <div class="class-box purple">Darrel Steward</div>
+          <div class="class-box blue">Jessica</div>
+          <div class="class-box green">John</div>
+        </div>
+        <div class="day-row">
+          <div class="day-slot">TUE</div>
+          <div class="class-box purple">Darrel Steward</div>
+          <div class="class-box blue">Jessica</div>
+          <div class="class-box green">John</div>
+        </div>
+        <div class="day-row">
+          <div class="day-slot">WED</div>
+          <div class="class-box purple">Darrel Steward</div>
+          <div class="class-box blue">Jessica</div>
+          <div class="class-box green">John</div>
+        </div>
+        <div class="day-row">
+          <div class="day-slot">THU</div>
+          <div class="class-box purple">Darrel Steward</div>
+          <div class="class-box blue">Jessica</div>
+          <div class="class-box green">John</div>
+        </div>
+        <div class="day-row">
+          <div class="day-slot">FRI</div>
+          <div class="class-box purple">Darrel Steward</div>
+          <div class="class-box blue">Jessica</div>
+          <div class="class-box green">John</div>
+        </div>
+        <div class="day-row">
+          <div class="day-slot">SAT</div>
+          <div class="class-box purple">Darrel Steward</div>
+          <div class="class-box blue">Jessica</div>
+          <div class="class-box green">John</div>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
