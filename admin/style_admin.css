@@ -178,7 +178,7 @@ td {
 th,
 td {
     padding: 12px;
-    text-align: left;
+    text-align: center;
 }
 
 tr.selected {
@@ -218,7 +218,7 @@ tr.selected {
     transform: scale(1.05);
 }
 
-#updateBtn {
+#updateBtn, #markAllAddressed {
     background-color: #007bff; /* Blue for Update */
     color: white;
 }
@@ -228,7 +228,12 @@ tr.selected {
     transform: scale(1.05);
 }
 
-#deleteBtn, #rejectBtn {
+#markAllAddressed:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+#deleteBtn, #rejectBtn, #deleteSelected {
     background-color: #dc3545; /* Red for Delete */
     color: white;
 }
@@ -239,6 +244,11 @@ tr.selected {
 }
 
 #rejectBtn:hover {
+    background-color: #c82333;
+    transform: scale(1.05);
+}
+
+#deleteSelected:hover {
     background-color: #c82333;
     transform: scale(1.05);
 }
@@ -279,7 +289,7 @@ tr.selected {
 .bookings-summary td {
     padding: 10px;
     border: 1px solid #ccc;
-    text-align: left;
+    text-align: center;
 }
 
 .bookings-summary th {
@@ -289,7 +299,7 @@ tr.selected {
 }
 
 .bookings-summary td {
-    background-color: white;
+    background-color: beige;
 }
 
 .charts {
@@ -366,12 +376,12 @@ tr.selected {
     overflow-x: auto;
 }
 
-table {
+#schedulePage table {
     width: 100%;
     border-collapse: collapse;
 }
 
-th,
+#schedulePage th,
 td {
     border: 1px solid #ccc;
     padding: 10px;
@@ -383,27 +393,97 @@ th {
     color: white;
 }
 
-td {
-    background-color: #f9f9f9;
+#schedulePage td {
+    background-color: beige;
 }
 
 /* Available slot */
-td.available {
+#schedulePage td.available {
     background-color: #d4edda; /* Green background for available slots */
     color: #155724;
     cursor: pointer;
     transition: background-color 0.2s ease;
 }
 
-td.available:hover {
+#schedulePage td.available:hover {
     background-color: #c3e6cb;
 }
 
 /* Unavailable slot */
-td.unavailable {
+#schedulePage td.unavailable {
     background-color: #f5c6cb; /* Red background for unavailable slots */
     color: #721c24;
     cursor: pointer;
     transition: background-color 0.2s ease;
+}
+
+/* Scoped Feedback Page Styles */
+#feedbackPage td.status-pending {
+    color: #856404;
+    font-weight: bold;
+}
+
+#feedbackPage td.status-addressed {
+    color: #155724;
+    font-weight: bold;
+}
+
+/* Login Page */
+body.login-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: beige;
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+}
+
+.login-container {
+    background: #f4f4f4;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+}
+
+.login-container h1 {
+    margin-bottom: 20px;
+    color: #6A0E31;
+}
+
+.login-container label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    text-align: left;
+    color: #333;
+}
+
+.login-container input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.login-container button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #6A0E31;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.login-container button:hover {
+    background-color: #530c26;
 }
 

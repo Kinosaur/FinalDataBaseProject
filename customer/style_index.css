@@ -340,9 +340,12 @@
 
 .trainers .trainer-container {
     display: flex;
-    justify-content: center; /* Centers the trainer cards horizontally */
-    gap: 20px; /* Adds spacing between trainer cards */
-    flex-wrap: wrap; /* Ensures responsiveness by wrapping on smaller screens */
+    justify-content: center;
+    /* Centers the trainer cards horizontally */
+    gap: 20px;
+    /* Adds spacing between trainer cards */
+    flex-wrap: wrap;
+    /* Ensures responsiveness by wrapping on smaller screens */
 }
 
 .trainers .trainer-card {
@@ -459,13 +462,14 @@ form button:hover {
 }
 
 body {
-    background-color: #f2f2f2; /* Light gray background for contrast */
+    background-color: #f2f2f2;
+    /* Light gray background for contrast */
 }
 
-form{
+form {
     margin-top: 20px;
 }
- 
+
 /* Contact Us Section */
 /* Container */
 .container {
@@ -509,7 +513,8 @@ form{
 
 .contact-icon {
     font-size: 1.5rem;
-    color: #4a0b26; /* Purple color for icons */
+    color: #4a0b26;
+    /* Purple color for icons */
 }
 
 .contact-option p {
@@ -518,10 +523,10 @@ form{
     margin: 0;
 }
 
-body{
+body {
     background-color: beige;
 }
- 
+
 /* payment-info */
 /* Payment Container */
 .payment-container {
@@ -661,6 +666,7 @@ body{
 .back-btn:hover {
     background-color: #7a1b45;
 }
+
 /* Time table */
 
 .timetable-container {
@@ -750,4 +756,3 @@ body{
 .orange {
     background-color: #ff9800;
 }
- 

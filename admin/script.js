@@ -3,22 +3,35 @@ const sidebar = document.querySelector('.sidebar');
 const mainContent = document.querySelector('.main-content');
 const toggler = document.querySelector('.sidebar-toggler');
 
+// Dummy admin credentials
+const adminCredentials = {
+    username: "admin",
+    password: "kino123",
+};
+
 // Toggle sidebar and adjust main content margin
-toggler.addEventListener('click', () => {
-    sidebar.classList.toggle('collapsed');
-    if (sidebar.classList.contains('collapsed')) {
-        mainContent.style.marginLeft = '115px'; // Adjust to collapsed width
-    } else {
-        mainContent.style.marginLeft = '300px'; // Adjust to expanded width
-    }
-});
+if (toggler) {
+    toggler.addEventListener('click', () => {
+        sidebar.classList.toggle('collapsed');
+        if (sidebar.classList.contains('collapsed')) {
+            mainContent.style.marginLeft = '115px'; // Adjust to collapsed width
+        } else {
+            mainContent.style.marginLeft = '300px'; // Adjust to expanded width
+        }
+    });
+}
 
 document.addEventListener("DOMContentLoaded", () => {
+    // Redirect to login if not authenticated
+    if (!sessionStorage.getItem("isLoggedIn") && !window.location.pathname.endsWith("admin_login.html")) {
+        window.location.href = "admin_login.html";
+    }
+
     // Sidebar navigation highlight
     const links = document.querySelectorAll(".sidebar-nav .nav-link");
-    const currentPage = window.location.pathname.split("/").pop().split(".")[0]; // Extracts 'facilities' from 'facilities.html'
+    const currentPage = window.location.pathname.split("/").pop().split(".")[0]; // Extracts the page name
 
-    links.forEach(link => {
+    links.forEach((link) => {
         if (link.dataset.page === currentPage) {
             link.classList.add("active");
         }
@@ -40,8 +53,39 @@ document.addEventListener("DOMContentLoaded", () => {
         initializeDashboardPage();
     } else if (currentPageDataset === "schedule") {
         initializeSchedulePage();
+    } else if (currentPageDataset === "feedback") {
+        initializeFeedbackPage();
+    }
+
+    // Handle login form submission
+    const loginForm = document.getElementById("loginForm");
+    if (loginForm) {
+        loginForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            if (username === adminCredentials.username && password === adminCredentials.password) {
+                sessionStorage.setItem("isLoggedIn", true); // Store login status
+                window.location.href = "dashboard.html"; // Redirect to dashboard
+            } else {
+                alert("Invalid username or password. Please try again.");
+            }
+        });
+    }
+
+    // Handle logout
+    const logoutButton = document.getElementById("logoutButton");
+    if (logoutButton) {
+        logoutButton.addEventListener("click", (e) => {
+            e.preventDefault();
+            sessionStorage.removeItem("isLoggedIn"); // Clear login status
+            window.location.href = "admin_login.html"; // Redirect to login page
+        });
     }
 });
+
+
 
 const dummyData = {
     revenue: 50000,
@@ -59,9 +103,19 @@ const dummyData = {
         { id: 3, name: "Conference Room", type: "Business", location: "Building C", availability: "Available", price: "$100/hr" },
     ],
     trainers: [
-        { id: 1, name: "Alice Johnson", phone: "123-456-7890", email: "alice@example.com" },
-        { id: 2, name: "Bob Smith", phone: "987-654-3210", email: "bob@example.com" },
-        { id: 3, name: "Charlie Brown", phone: "555-555-5555", email: "charlie@example.com" },
+        { id: 1, name: "Johnson", phone: "123-456-7890", email: "john@example.com" },
+        { id: 2, name: "Jane Smith", phone: "987-654-3210", email: "jane@example.com" },
+        { id: 3, name: "Micheal Brown", phone: "555-555-5555", email: "micky@example.com" },
+    ],
+    admins: [
+        { id: 1, name: "Myat Bhone Pyae", phone: "123-456-7890", email: "knox@example.com" },
+        { id: 2, name: "Thit Lwin", phone: "987-654-3210", email: "jhon@example.com" },
+        { id: 3, name: "Kaung Khant Lin", phone: "06-34070213", email: "kino@example.com" },
+    ],
+    customers: [
+        { id: 1, name: "Alice Johnson", phone: "123-456-7890", email: "alice@example.com", plan: "Yearly", status: "Active" },
+        { id: 2, name: "Bob Smith", phone: "987-654-3210", email: "bob@example.com", plan: "Yearly", status: "Active" },
+        { id: 3, name: "Charlie Brown", phone: "555-555-5555", email: "charlie@example.com", plan: "Monthly", status: "Inactive" },
     ],
 };
 
@@ -184,16 +238,9 @@ function initializeAdminsPage() {
         return;
     }
 
-    // Dummy Data for Admins
-    const dummyAdmins = [
-        { id: 1, name: "Myat Bhone Pyae", phone: "123-456-7890", email: "knox@example.com" },
-        { id: 2, name: "Thit Lwin", phone: "987-654-3210", email: "jhon@example.com" },
-        { id: 3, name: "Kaung Khant Lin", phone: "06-34070213", email: "kino@example.com" },
-    ];
-
     // Populate the table with dummy data
-    dummyAdmins.forEach((admin) => {
-        const row = document.createElement("tr");
+    dummyData.admins.forEach((admin) => {
+        const row = document.createElement("tr"); 
         row.innerHTML = `
             <td>${admin.id}</td>
             <td>${admin.name}</td>
@@ -252,15 +299,8 @@ function initializeCustomersPage() {
         return;
     }
 
-    // Dummy Data for Customers
-    const dummyCustomers = [
-        { id: 1, name: "Alice Johnson", phone: "123-456-7890", email: "alice@example.com", plan: "Yearly", status: "Active" },
-        { id: 2, name: "Bob Smith", phone: "987-654-3210", email: "bob@example.com", plan: "Yearly", status: "Active" },
-        { id: 3, name: "Charlie Brown", phone: "555-555-5555", email: "charlie@example.com", plan: "Monthly", status: "Inactive" },
-    ];
-
     // Populate the table with dummy data
-    dummyCustomers.forEach((customer) => {
+    dummyData.customers.forEach((customer) => {
         const row = document.createElement("tr");
         row.innerHTML = `
             <td>${customer.id}</td>
@@ -331,15 +371,8 @@ function initializeTrainersPage() {
         return;
     }
 
-    // Dummy Data for Trainers
-    const dummyTrainers = [
-        { id: 1, name: "Alice Johnson", phone: "123-456-7890", email: "alice@example.com" },
-        { id: 2, name: "Bob Smith", phone: "987-654-3210", email: "bob@example.com" },
-        { id: 3, name: "Charlie Brown", phone: "555-555-5555", email: "charlie@example.com" },
-    ];
-
     // Populate the table with dummy data
-    dummyTrainers.forEach((trainer) => {
+    dummyData.trainers.forEach((trainer) => {
         const row = document.createElement("tr");
         row.innerHTML = `
             <td>${trainer.id}</td>
@@ -439,7 +472,7 @@ function initializeDashboardPage() {
 }
 
 function initializeSchedulePage() {
-    const trainers = ["John Doe", "Jane Smith", "Michael Brown"];
+    const trainers = ["Alice Johnson", "Bob Smith", "Charlie Brown"];
     const scheduleTableBody = document.getElementById("scheduleTableBody");
 
     // Check if table body exists
@@ -503,3 +536,69 @@ function initializeSchedulePage() {
         });
     }
 }
+
+function initializeFeedbackPage() {
+    const feedbackData = [
+        { id: 1, customer: "John Doe", text: "Great service!", date: "2025-01-20", status: "Pending" },
+        { id: 2, customer: "Jane Smith", text: "I had an issue with booking.", date: "2025-01-21", status: "Pending" },
+        { id: 3, customer: "Michael Brown", text: "Everything went smoothly!", date: "2025-01-19", status: "Addressed" },
+    ];
+
+    const feedbackTableBody = document.getElementById("feedbackTableBody");
+
+    // Populate Feedback Table
+    function populateTable(data) {
+        feedbackTableBody.innerHTML = ""; // Clear existing rows
+        data.forEach((feedback) => {
+            const row = document.createElement("tr");
+            row.innerHTML = `
+                <td>${feedback.id}</td>
+                <td>${feedback.customer}</td>
+                <td>${feedback.text}</td>
+                <td>${feedback.date}</td>
+                <td class="status-${feedback.status.toLowerCase()}">${feedback.status}</td>
+            `;
+            row.addEventListener("click", () => selectRow(row)); // Add row selection
+            feedbackTableBody.appendChild(row);
+        });
+    }
+
+    // Handle Row Selection
+    function selectRow(row) {
+        feedbackTableBody.querySelectorAll("tr").forEach((r) => r.classList.remove("selected"));
+        row.classList.add("selected");
+    }
+
+    // Handle "Mark All as Addressed"
+    document.getElementById("markAllAddressed").addEventListener("click", () => {
+        feedbackData.forEach((feedback) => {
+            if (feedback.status === "Pending") {
+                feedback.status = "Addressed";
+            }
+        });
+        populateTable(feedbackData); // Refresh table
+        alert("All pending feedback marked as addressed.");
+    });
+
+    // Handle "Delete Selected"
+    document.getElementById("deleteSelected").addEventListener("click", () => {
+        const selectedRow = document.querySelector("tr.selected");
+        if (!selectedRow) {
+            alert("Please select a row to delete.");
+            return;
+        }
+
+        const selectedId = parseInt(selectedRow.cells[0].textContent); // Get the ID from the first cell
+        const index = feedbackData.findIndex((feedback) => feedback.id === selectedId);
+
+        if (index !== -1) {
+            feedbackData.splice(index, 1); // Remove the feedback from the array
+            populateTable(feedbackData); // Refresh table
+            alert(`Feedback with ID ${selectedId} deleted.`);
+        }
+    });
+
+    // Initialize Feedback Table
+    populateTable(feedbackData);
+}
+

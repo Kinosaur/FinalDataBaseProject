@@ -4,14 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admins</title>
+    <title>Feedback</title>
     <!-- Linking Google fonts for icons -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
     <link rel="stylesheet" href="style_admin.css">
 </head>
 
-<body data-page="admins">
+<body data-page="feedback">
     <aside class="sidebar">
         <header class="sidebar-header">
             <div class="header-logo">
@@ -95,32 +95,35 @@
         </nav>
     </aside>
 
-    <!-- Main content area -->
-    <div class="main-content">
-        <h1>Admins</h1>
-
-        <!-- Buttons -->
+    <div class="main-content" id="feedbackPage">
+        <h1>Customer Feedback</h1>
+    
+        <!-- Feedback Actions -->
         <div class="buttons">
-            <button id="addBtn">Add</button>
-            <button id="updateBtn">Update</button>
-            <button id="deleteBtn">Delete</button>
+            <button id="markAllAddressed">Mark All as Addressed</button>
+            <button id="deleteSelected">Delete Selected</button>
         </div>
-
-        <!-- Table -->
-        <table id="adminsTable">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Phone</th>
-                    <th>Email</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Will be populated dynamically -->
-            </tbody>
-        </table>
+    
+        <!-- Feedback Table -->
+        <div class="feedback-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Customer Name</th>
+                        <th>Feedback</th>
+                        <th>Date</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="feedbackTableBody">
+                    <!-- Dynamic rows will be populated here -->
+                </tbody>
+            </table>
+        </div>
     </div>
+    
+    
 
     <script src="script.js"></script>
 </body>
