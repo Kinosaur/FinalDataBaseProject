@@ -113,9 +113,9 @@ const dummyData = {
         { id: 3, name: "Kaung Khant Lin", phone: "06-34070213", email: "kino@example.com" },
     ],
     customers: [
-        { id: 1, name: "Alice Johnson", phone: "123-456-7890", email: "alice@example.com", plan: "Yearly", status: "Active" },
-        { id: 2, name: "Bob Smith", phone: "987-654-3210", email: "bob@example.com", plan: "Yearly", status: "Active" },
-        { id: 3, name: "Charlie Brown", phone: "555-555-5555", email: "charlie@example.com", plan: "Monthly", status: "Inactive" },
+        { id: 1, name: "Alice Johnson", phone: "123-456-7890", email: "alice@example.com", type: "Yearly", status: "Active" },
+        { id: 2, name: "Bob Smith", phone: "987-654-3210", email: "bob@example.com", type: "Yearly", status: "Active" },
+        { id: 3, name: "Charlie Brown", phone: "555-555-5555", email: "charlie@example.com", type: "Monthly", status: "Inactive" },
     ],
 };
 
@@ -307,7 +307,7 @@ function initializeCustomersPage() {
             <td>${customer.name}</td>
             <td>${customer.phone}</td>
             <td>${customer.email}</td>
-            <td>${customer.plan}</td>
+            <td>${customer.type}</td>
             <td>${customer.status}</td>
         `;
         tableBody.appendChild(row);
