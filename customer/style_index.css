@@ -19,6 +19,30 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    background-color: beige;
+    font-size: 1rem; /* Base font size */
+    line-height: 1.6;
+}
+
+button, .back-btn, .download-btn {
+    background-color: #6a0e31;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover, .back-btn:hover, .download-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: #7a1b45; /* Consistent hover color */
+}
+
+button:active {
+    transform: scale(0.98);
 }
 
 /* Nav Bar */
@@ -37,7 +61,6 @@ body {
 }
 
 .website-name {
-    font-size: 1.5rem;
     /* Adjust the font size */
     font-weight: bold;
     color: #6a0e31;
@@ -69,37 +92,40 @@ body {
     color: #6a0e31;
 }
 
-.nav-buttons button {
-    background-color: #6a0e31;
-    border-radius: 8px;
-    height: 40px;
-    padding: 10px 20px;
-    color: beige;
-    transition: background-color 0.3s ease;
+/* Active state for navbar links */
+.nav-links a.active {
+    font-weight: bold;
+    color: #6a0e31;
+    text-decoration: underline;
 }
 
-.nav-buttons button:hover {
-    cursor: pointer;
-    background-color: beige;
+.nav-buttons {
+    display: flex; /* Ensure buttons are aligned horizontally */
+    gap: 10px; /* Add spacing between buttons */
+}
+
+.nav-buttons a {
+    text-decoration: none; /* Remove underline for links wrapping buttons */
+}
+
+/* Navbar Profile Section */
+.nav-profile {
+    display: none; /* Hidden by default */
+    align-items: center;
+    gap: 10px;
+}
+
+.profile-menu {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: bold;
     color: #6a0e31;
 }
 
 /* Facilities */
 .view_facilities button {
     text-align: center;
-    padding: 10px 20px;
-    background-color: #6a0e31;
-    color: beige;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
-}
-
-.view_facilities button:hover {
-    background-color: beige;
-    color: #6a0e31;
 }
 
 /* Centering the Button */
@@ -107,10 +133,6 @@ body {
     display: flex;
     justify-content: center;
     margin: 20px 0;
-}
-
-.view-facilities {
-    text-decoration: none;
 }
 
 .hero {
@@ -195,53 +217,50 @@ body {
 }
 
 .facilities .facility-info p {
-    font-size: 1rem;
     margin-bottom: 1rem;
 }
 
 .facilities .facility-details {
     display: flex;
     justify-content: space-between;
-    font-size: 1rem;
     margin-bottom: 1rem;
 }
 
-.facilities .book-now {
-    padding: 10px 20px;
-    background-color: #6a0e31;
-    color: beige;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
-}
-
-.facilities .book-now:hover {
-    color: #6a0e31;
-    background: beige;
-}
-
-/* Footer */
+/* Footer container */
 .footer {
     margin-top: auto;
     background-color: #6a0e31;
     color: beige;
     text-align: center;
-    padding: 20px;
+    padding: 30px 20px; /* Increase padding for spacing */
 }
 
-.footer a {
-    color: beige;
-    text-decoration: none;
-    font-weight: bold;
+/* Footer text */
+.footer p {
+    margin: 0;
+    font-weight: 500;
 }
 
+/* Footer links */
 .footer-links {
     list-style: none;
     display: flex;
     justify-content: center;
-    gap: 40px;
+    gap: 20px; /* More flexible than margin */
+    flex-wrap: wrap;
+}
+
+/* Footer links styling */
+.footer-links a {
+    color: beige;
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+/* Footer links hover effect */
+.footer-links a:hover {
+    text-decoration: underline;
+    transform: scale(1.05);
 }
 
 /* Membership Plan Section */
@@ -263,11 +282,13 @@ body {
     margin: 20px auto;
     max-width: 900px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%; /* Ensures all cards are uniform */
 }
 
 .membership-plan img {
-    width: 200px;
-    height: 200px;
+    width: 150px; /* Uniform image width */
+    height: 150px; /* Uniform image height */
+    object-fit: cover; /* Ensures images are cropped uniformly */
     border-radius: 10px;
 }
 
@@ -285,7 +306,6 @@ body {
 
 .membership-plan p {
     margin: 5px 0;
-    font-size: 1.1rem;
 }
 
 .membership-plan ul {
@@ -297,40 +317,6 @@ body {
 .membership-plan ul li {
     margin-bottom: 5px;
 }
-
-.membership-plan button {
-    padding: 10px 20px;
-    background-color: #6a0e31;
-    color: beige;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
-}
-
-.membership-plan button:hover {
-    background-color: beige;
-    color: #6a0e31;
-}
-
-.time_table button {
-    text-align: center;
-    padding: 10px 20px;
-    background-color: #6a0e31;
-    color: beige;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
-}
-
-.time_table button:hover {
-    background-color: beige;
-    color: #6a0e31;
-}
-
 
 /* Trainers Section */
 .trainers {
@@ -359,7 +345,7 @@ body {
 }
 
 .trainers .trainer-card {
-    width: 250px;
+    width: 300px; /* Set a uniform width for all trainer cards */
     text-align: center;
     background-color: beige;
     border: 1px solid #6a0e31;
@@ -372,10 +358,10 @@ body {
 }
 
 .trainers .trainer-card img {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    object-fit: cover;
+    width: 150px; /* Uniform width for images */
+    height: 150px; /* Uniform height for images */
+    object-fit: cover; /* Ensures uniform cropping */
+    border-radius: 50%; /* Circular images for trainers */
     margin-bottom: 10px;
 }
 
@@ -386,7 +372,6 @@ body {
 }
 
 .trainers .trainer-card p {
-    font-size: 1rem;
     margin-bottom: 10px;
 }
 
@@ -404,38 +389,38 @@ body {
     text-decoration: none;
 }
 
-/* Fill Details Form */
+/* Form container */
 form {
     background-color: #ffffff;
-    width: 400px;
-    margin: 50px auto;
-    padding: 20px;
+    width: 100%;
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 30px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-form div {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 15px;
-}
-
+/* Form labels */
 form label {
-    font-size: 0.9rem;
-    margin-bottom: 5px;
+    display: block;
+    font-weight: bold;
+    margin-bottom: 10px;
     color: #333;
 }
 
+/* Form inputs and select dropdowns */
 form input,
 form select {
+    width: 100%;
     padding: 10px;
-    font-size: 1rem;
     border: 1px solid #ddd;
     border-radius: 5px;
     background-color: #f8f8f8;
-    width: 100%;
+    margin-bottom: 20px;
+    transition: border-color 0.3s ease;
 }
 
+/* Focused input styling */
 form input:focus,
 form select:focus {
     outline: none;
@@ -443,30 +428,69 @@ form select:focus {
     background-color: #fff;
 }
 
+/* Required and invalid fields */
+form input:required {
+    border-left: 3px solid #6a0e31;
+}
+
+form input:invalid {
+    border-left: 3px solid red;
+}
+
+/* Form button */
 form button {
     width: 100%;
-    padding: 10px;
-    font-size: 1rem;
-    color: #fff;
+    padding: 12px;
     background-color: #6a0e31;
+    color: white;
+    font-weight: bold;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 form button:hover {
-    background-color: #4a0b26;
+    background-color: #861a43;
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-body {
-    background-color: #f2f2f2;
-    /* Light gray background for contrast */
+form button:active {
+    transform: scale(0.98);
 }
 
-form {
-    margin-top: 20px;
+/* Placeholder styling */
+form input::placeholder {
+    color: #aaa;
+    font-size: 0.9rem;
+}
+
+/* Error messages */
+.form-error {
+    color: red;
+    font-size: 0.9rem;
+    margin-top: -15px;
+    margin-bottom: 15px;
+}
+
+/* Redirect link under forms */
+.form-redirect {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.form-redirect a {
+    color: #6a0e31;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.form-redirect a:hover {
+    color: #861a43;
 }
 
 /* Contact Us Section */
@@ -478,33 +502,36 @@ form {
 
 /* Title and Description */
 .help-title {
-    font-size: 2rem;
+    font-size: 2.5rem;
     font-weight: bold;
-    color: #000;
-    margin-bottom: 10px;
+    color: #333;
+    margin: 20px 0;
 }
 
 .help-description {
-    font-size: 1rem;
     color: #666;
     margin-bottom: 30px;
+    text-align: center;
 }
 
+/* Contact Section */
 .contact-us {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 30px;
     align-items: center;
+    margin-top: 40px;
 }
 
 .contact-option {
     display: flex;
     align-items: center;
-    gap: 15px;
-    background-color: #ffff;
+    gap: 20px;
+    background-color: #ffffff;
     padding: 15px 20px;
     border-radius: 25px;
-    width: 400px;
+    width: 100%;
+    max-width: 500px; /* Adjusted to prevent too wide a layout */
     justify-content: flex-start;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     font-family: "Poppins", sans-serif;
@@ -512,18 +539,55 @@ form {
 
 .contact-icon {
     font-size: 1.5rem;
-    color: #4a0b26;
-    /* Purple color for icons */
+    color: #4a0b26; /* Icon color */
 }
 
 .contact-option p {
-    font-size: 1rem;
-    color: #000;
+    color: #333; /* Ensure the text is readable */
     margin: 0;
+    font-size: 1.1rem;
 }
 
-body {
-    background-color: beige;
+/* Feedback Section */
+.feedback-section {
+    background-color: #f9f9f9;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+}
+
+.feedback-section h3 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.feedback-section label {
+    font-weight: bold;
+    margin-bottom: 10px;
+    display: block;
+    color: #333;
+}
+
+.feedback-section input,
+.feedback-section textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f8f8f8;
+}
+
+.feedback-section textarea {
+    height: 150px;
+    resize: vertical;
 }
 
 /* payment-info */
@@ -568,7 +632,6 @@ body {
 }
 
 .instructions {
-    font-size: 1rem;
     color: #555;
     margin-bottom: 15px;
 }
@@ -582,26 +645,6 @@ body {
     width: 200px;
     height: 200px;
     margin-bottom: 15px;
-}
-
-.download-btn {
-    padding: 10px 15px;
-    font-size: 1rem;
-    background-color: #7a1b45;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    margin-bottom: 10px;
-}
-
-.download-btn i {
-    margin-right: 5px;
-}
-
-.download-btn:hover {
-    background-color: #7a1b45;
 }
 
 .extra-info {
@@ -650,20 +693,7 @@ body {
 }
 
 .back-btn {
-    margin-top: 20px;
-    padding: 10px 15px;
-    font-size: 1rem;
-    background-color: #7a1b45;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
     width: 100%;
-}
-
-.back-btn:hover {
-    background-color: #7a1b45;
 }
 
 /* About Section */
@@ -697,58 +727,43 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Timetable container */
-.timetable-container {
-    text-align: center;
-    margin: 30px auto;
-    padding: 40px;
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    max-width: 1200px; /* Increased width for more space */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
 /* Timetable table */
 .timetable {
     width: 100%;
     border-collapse: collapse;
     margin: 20px 0;
-    font-size: 1.1rem; /* Slightly larger text */
     text-align: center;
     background-color: #fff;
-}
-
-.timetable th, .timetable td {
-    padding: 20px 30px; /* Added more padding for spacing */
-    border: 1px solid #ddd;
 }
 
 .timetable th {
     background-color: #6a0e31;
     color: white;
-    font-weight: bold;
     font-size: 1.2rem; /* Increased header font size */
 }
 
-.timetable td {
-    font-size: 1rem;
-    color: #333;
-}
-
+/* Timetable alternate row styling */
 .timetable tr:nth-child(even) {
-    background-color: #f3f1f1;
+    background-color: #f9f9f9; /* Light gray for even rows */
 }
 
-.timetable tr:hover {
-    cursor: pointer;
+.timetable tr:nth-child(odd) {
+    background-color: #ffffff; /* White for odd rows */
 }
 
-/* Day column styling */
+/* Timetable header and cell styling */
+.timetable th, .timetable td {
+    padding: 20px 30px; /* Increased padding for better spacing */
+    text-align: center; /* Center-align text */
+    border: 1px solid #ddd; /* Add borders around cells */
+}
+
+/* Day column styling (left-most column) */
 .timetable td:first-child {
     font-weight: bold;
-    color: #6a0e31;
-    text-align: left;
-    padding-left: 20px; /* Align the day names better */
+    color: #6a0e31; /* Highlight day names */
+    text-align: left; /* Align day names to the left */
+    padding-left: 40px; /* Extra padding for readability */
 }
+
 

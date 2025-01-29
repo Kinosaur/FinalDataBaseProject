@@ -23,6 +23,17 @@
             <li><a href="memberships.html">Memberships</a></li>
             <li><a href="contact.html">Contact Us</a></li>
         </ul>
+        <div class="nav-buttons">
+            <!-- Shown when the user is not logged in -->
+            <a href="login.html"><button id="login-btn">Log In</button></a>
+            <a href="signup.html"><button id="signup-btn">Sign Up</button></a>
+        </div>
+        <div class="nav-profile" style="display: none;">
+            <div class="profile-menu">
+                <span id="user-name"></span>
+                <button id="logout-btn">Log Out</button>
+            </div>
+        </div>
     </nav>
 
     <div class="container">
@@ -50,6 +61,25 @@
         </div>
     </div>
 
+    <!-- Feedback Section -->
+    <div class="feedback-section">
+        <h3>We Value Your Feedback!</h3>
+        <form id="feedback-form" method="POST" action="/submit-feedback">
+            <label for="feedback-name">Name:</label>
+            <input type="text" id="feedback-name" name="name" placeholder="Enter your name" required>
+
+            <label for="feedback-email">Email:</label>
+            <input type="email" id="feedback-email" name="email" placeholder="Enter your email" required>
+
+            <label for="feedback-message">Your Feedback:</label>
+            <textarea id="feedback-message" name="message" placeholder="Write your feedback here..."
+                required></textarea>
+
+            <button type="submit">Submit Feedback</button>
+        </form>
+    </div>
+
+
     <!-- Footer Section -->
     <footer class="footer">
         <div class="footer-content">
@@ -62,6 +92,8 @@
             </ul>
         </div>
     </footer>
+
+    <script src="script.js"></script>
 
 </body>
 
