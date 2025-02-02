@@ -108,9 +108,7 @@ const dummyData = {
         { id: 3, name: "Micheal Brown", phone: "555-555-5555", email: "micky@example.com" },
     ],
     admins: [
-        { id: 1, name: "Myat Bhone Pyae", phone: "123-456-7890", email: "knox@example.com" },
-        { id: 2, name: "Thit Lwin", phone: "987-654-3210", email: "jhon@example.com" },
-        { id: 3, name: "Kaung Khant Lin", phone: "06-34070213", email: "kino@example.com" },
+        { id: 1, name: "Admin1", phone: "123-456-7890", email: "admin@example.com" },
     ],
     customers: [
         { id: 1, name: "Alice Johnson", phone: "123-456-7890", email: "alice@example.com", type: "Yearly", status: "Active" },
