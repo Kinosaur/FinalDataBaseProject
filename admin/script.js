@@ -89,9 +89,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 const dummyData = {
     revenue: 50000,
-    activeMemberships: 120,
-    totalBookings: 45,
-    activeTrainers: 8,
+    activeMemberships: 3,
+    totalBookings: 3,
+    activeTrainers: 3,
     bookings: [
         { id: 1, customer: "John Doe", field: "Gym", date: "2025-01-25", time: "10:00 AM - 11:00 AM", status: "Pending" },
         { id: 2, customer: "Jane Smith", field: "Swimming Pool", date: "2025-01-26", time: "1:00 PM - 2:00 PM", status: "Approved" },
@@ -423,7 +423,7 @@ function initializeTrainersPage() {
 
 function initializeDashboardPage() {
     // Populate Metrics
-    document.querySelectorAll(".card")[0].textContent = `Total Revenue: $${dummyData.revenue}`;
+    document.querySelectorAll(".card")[0].textContent = `Total Revenue: ฿${dummyData.revenue}`;
     document.querySelectorAll(".card")[1].textContent = `Active Memberships: ${dummyData.activeMemberships}`;
     document.querySelectorAll(".card")[2].textContent = `Total Bookings: ${dummyData.totalBookings}`;
     document.querySelectorAll(".card")[3].textContent = `Active Trainers: ${dummyData.activeTrainers}`;
