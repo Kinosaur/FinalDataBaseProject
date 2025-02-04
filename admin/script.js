@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
         initializeDashboardPage();
     } else if (currentPageDataset === "schedule") {
         initializeSchedulePage();
-    } else if (currentPageDataset === "feedback") {
+    } else if (currentPageDataset === "feedbacks") {
         initializeFeedbackPage();
     }
 
