@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule</title>
+    <link rel="stylesheet" href="style_index.css">
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">
+            <img src="../images/Logo.png" alt="Logo">
+            Active Heaven
+        </div>
+        <div class="nav-links">
+            <a href="schedule.html">Schedule</a>
+            <a href="feedback.html">Feedback</a>
+        </div>
+        <div class="user-info">
+            <span id="username-display">Guest</span>
+            <button class="logout-button" onclick="logout()">Log Out</button>
+        </div>
+        
+    </div>
+    
+    <div class="container">
+        <h1>My Schedule</h1>
+        <table>
+            <tr>
+                <th>Day</th>
+                <th>Time Slots</th>
+            </tr>
+            <tr>
+                <td>Monday</td>
+                <td>08:00 AM - 10:00 AM<br>02:00 PM - 04:00 PM</td>
+            </tr>
+            <tr>
+                <td>Tuesday</td>
+                <td>Free Day</td>
+            </tr>
+            <tr>
+                <td>Wednesday</td>
+                <td>09:00 AM - 11:00 AM<br>01:00 PM - 03:00 PM</td>
+            </tr>
+            <tr>
+                <td>Thursday</td>
+                <td>11:00 AM - 01:00 PM<br>04:00 PM - 06:00 PM</td>
+            </tr>
+            <tr>
+                <td>Friday</td>
+                <td>Free Day</td>
+            </tr>
+            <tr>
+                <td>Saturday</td>
+                <td>10:00 AM - 12:00 PM</td>
+            </tr>
+            <tr>
+                <td>Sunday</td>
+                <td>Work Close</td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
+
+<script>
+    function getUsername() {
+        return localStorage.getItem('username') || 'Guest';
+    }
+
+    function setUsername() {
+        document.getElementById('username-display').textContent = getUsername();
+    }
+
+    function logout() {
+        localStorage.removeItem('username'); // Clear username
+        window.location.href = "login.html"; // Redirect to login page
+    }
+
+    // Set username when the page loads
+    setUsername();
+</script>
+
