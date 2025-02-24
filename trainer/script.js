@@ -148,7 +148,7 @@ async function initializeTrainerDashboard() {
         localStorage.removeItem("token");
         localStorage.removeItem("user");
         alert("✅ Logged out successfully!");
-        window.location.href = "trainer_login.html"; // Redirect to login
+        window.location.href = "login.html"; // Redirect to login
     });
 
     // ✅ Initial Fetch
