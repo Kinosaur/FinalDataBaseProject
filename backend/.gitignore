@@ -13,3 +13,5 @@ yarn-error.log*
 # Database and temporary files
 *.sqlite
 *.log
+
+.vscode
