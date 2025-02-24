@@ -186,7 +186,7 @@ npm start
 ## 👨‍💻 About Me
 
 👋 **Hello, I'm Kaung Khant Lin aka Kino!**  
-We are **Computer Science students at Assumption University of Thailand** with a passion for **backend development, database management, and scalable web applications**. This project is part of my learning journey, applying **Express.js, PostgreSQL, and JWT authentication**.
+We are **Computer Science students at Assumption University of Thailand** with a passion for **frontend, backend development, and database management**. This project is part of our learning journey, applying **Express.js, PostgreSQL, and JWT authentication**.
 
 🔗 **Connect with me:**
 - GitHub: [@Kinosaur](https://github.com/Kinosaur)
