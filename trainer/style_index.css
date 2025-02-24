@@ -15,6 +15,13 @@ h1 {
     margin: 20px 0;
 }
 
+h2 {
+    font-size: 1.5rem;
+    color: #333;
+    margin: 20px;
+    margin-left: 80px;
+}
+
 body {
     display: flex;
     flex-direction: column;
@@ -123,8 +130,6 @@ button:active {
     color: #6a0e31;
 }
 
-
-
 /* Form container */
 form {
     background-color: #ffffff;
@@ -210,14 +215,6 @@ form input::placeholder {
     margin-bottom: 15px;
 }
 
-
-/* Trainer Page */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: beige;
-}
 .navbar {
     background-color: white;
     padding: 15px 30px;
@@ -258,57 +255,80 @@ body {
     align-items: center;
     gap: 15px;
 }
-.logout-button {
-    background-color: #600;
-    color: white;
-    border: none;
-    padding: 8px 15px;
-    cursor: pointer;
-    font-weight: bold;
-    border-radius: 5px;
-}
-.container {
-    max-width: 800px;
-    width: 90%;
-    margin: 20px auto;
-    background: white;
+
+/* 📌 Trainer Dashboard Styling */
+.main-content {
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-family: "Poppins", sans-serif;
+    max-width: 1200px; /* Set a comfortable max width */
+    width: 90%; /* Make sure it expands on larger screens */
+    margin: auto;
 }
-h1 {
-    border-bottom: 2px solid #ccc;
-    padding-bottom: 10px;
-}
-.feedback-card, .schedule {
-    background: #fff;
-    padding: 15px;
-    margin: 10px 0;
-    border-radius: 8px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-}
-.stars {
-    color: gold;
-}
+
+/* 📌 General Table Styling */
 table {
     width: 100%;
     border-collapse: collapse;
+    margin-top: 20px;
+    min-width: 800px; /* Ensures table is wide enough */
 }
-th, td {
+
+/* 📌 Schedule Table Styling */
+#scheduleTable,
+#feedbackTable {
+    width: 100%;
+    max-width: 1000px; /* Set a max width */
+    margin: auto; /* Center the tables */
+    border-collapse: collapse;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 📌 Table Headings */
+#scheduleTable th,
+#feedbackTable th {
+    padding: 16px;
+    text-align: center;
+    background-color: #6A0E31;
+    color: white;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+/* 📌 Table Rows */
+#scheduleTable td,
+#feedbackTable td {
+    padding: 16px;
+    text-align: center;
+    font-size: 1.1rem;
     border-bottom: 1px solid #ddd;
-    padding: 10px;
-    text-align: left;
+    background-color: beige;
 }
 
-/* Align Time Slots to the right */
-table td:nth-child(2) {
-    text-align: right;
-    padding-right: 20px; /* Adds space on the right side */
+/* 📌 Highlight Scheduled Days */
+#scheduleTable td.scheduled {
+    color: green;
+    font-weight: bold;
 }
 
-table th:nth-child(2) {
-    text-align: right; /* Aligns the header of the "Time Slots" column */
-    padding-right: 20px; /* Adds space on the right side for the header */
+/* 📌 Highlight Off Days */
+#scheduleTable td.off-day {
+    color: red;
+    font-weight: bold;
 }
 
+/* 📌 Responsive Table */
+@media (max-width: 768px) {
+    .main-content {
+        width: 100%;
+        padding: 10px;
+    }
 
+    table {
+        min-width: 100%;
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+}

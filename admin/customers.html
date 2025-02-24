@@ -40,21 +40,15 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="bookings.html" class="nav-link" data-page="bookings" title="Bookings">
-                        <span class="nav-icon material-symbols-rounded">folder</span>
-                        <span class="nav-label">Bookings</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="admins.html" class="nav-link" data-page="admins" title="Admin">
-                        <span class="nav-icon material-symbols-rounded">person</span>
-                        <span class="nav-label">Admin</span>
-                    </a>
-                </li>
-                <li class="nav-item">
                     <a href="customers.html" class="nav-link" data-page="customers" title="Customers">
                         <span class="nav-icon material-symbols-rounded">diversity_3</span>
                         <span class="nav-label">Customers</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="payments.html" class="nav-link" data-page="payments" title="Payments">
+                        <span class="nav-icon material-symbols-rounded">payments</span>
+                        <span class="nav-label">Payments</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -80,7 +74,7 @@
             <!-- Secondary Bottom nav -->
             <ul class="nav-list secondary-nav">
                 <li class="nav-item">
-                    <a href="#" class="nav-link" title="Profile">
+                    <a href="admins.html" class="nav-link" title="Profile">
                         <span class="nav-icon material-symbols-rounded">account_circle</span>
                         <span class="nav-label">Profile</span>
                     </a>
@@ -90,7 +84,7 @@
                         <span class="nav-icon material-symbols-rounded">logout</span>
                         <span class="nav-label">Logout</span>
                     </a>
-                </li>                
+                </li>
             </ul>
         </nav>
     </aside>
@@ -101,9 +95,8 @@
 
         <!-- Buttons -->
         <div class="buttons">
-            <button id="addBtn">Add</button>
-            <button id="updateBtn">Update</button>
-            <button id="deleteBtn">Delete</button>
+            <button id="updateBtn" disabled>Update</button>
+            <button id="deleteBtn" disabled>Delete</button>
         </div>
 
         <!-- Table -->
@@ -112,8 +105,8 @@
                 <tr>
                     <th>ID</th>
                     <th>Name</th>
-                    <th>Phone</th>
                     <th>Email</th>
+                    <th>Phone</th>
                     <th>Membership</th>
                     <th>Status</th>
                 </tr>
@@ -123,6 +116,30 @@
             </tbody>
         </table>
     </div>
+
+    <!-- Modal Form for Updating Customers -->
+    <div id="customerModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modal-title">Update Customer</h2>
+            <form id="customerForm">
+                <input type="hidden" id="customer-id">
+
+                <label>Name:</label>
+                <input type="text" id="customer-name" required />
+
+                <label>Email:</label>
+                <input type="email" id="customer-email" required />
+
+                <label>Phone:</label>
+                <input type="text" id="customer-phone" required />
+
+                <button type="submit" id="saveCustomerBtn">Update</button>
+            </form>
+        </div>
+    </div>
+
+
 
     <script src="script.js"></script>
 </body>

@@ -24,7 +24,7 @@ body {
     line-height: 1.6;
 }
 
-button, .back-btn, .download-btn {
+button, .back-btn {
     background-color: #6a0e31;
     color: #fff;
     padding: 10px 20px;
@@ -35,7 +35,7 @@ button, .back-btn, .download-btn {
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-button:hover, .back-btn:hover, .download-btn:hover {
+button:hover, .back-btn:hover {
     transform: scale(1.05);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     background-color: #7a1b45; /* Consistent hover color */
@@ -123,13 +123,83 @@ button:active {
     color: #6a0e31;
 }
 
+/* Profile Container */
+.profile-container {
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Horizontally center content */
+    justify-content: center; /* Vertically center content */
+    width: 80%; /* Adjust width to create some space */
+    max-width: 800px; /* Limit maximum width */
+    margin: 20px auto; /* Center the container in the middle */
+}
+
+.profile-details p {
+    font-size: 1.2rem;
+    margin: 10px 0;
+    padding: 10px;
+    text-align: left; /* Keep text aligned to the left */
+}
+
+.profile-details strong {
+    font-weight: bold;
+}
+
+/* Booking and Membership Section */
+#booking-list,
+#membership-details {
+    margin-top: 20px;
+}
+
+#booking-list li,
+#membership-details p {
+    font-size: 1rem;
+    margin: 8px 0;
+    padding: 10px;
+    text-align: left; /* Keep text aligned to the left */
+}
+
+#membership-details p {
+    font-weight: bold;
+}
+
+#membership-details span {
+    font-weight: normal;
+}
+
+/* Update Profile Form */
+#update-profile-form {
+    margin-top: 20px;
+    width: 100%; /* Ensure form stretches across the container */
+    max-width: 400px; /* Limit form width */
+}
+
+#update-profile-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+#update-profile-form input {
+    padding: 8px;
+    width: 100%;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
 /* Facilities */
-.view_facilities button {
+.view-fields button {
     text-align: center;
 }
 
 /* Centering the Button */
-.view_facilities {
+.view_fields {
     display: flex;
     justify-content: center;
     margin: 20px 0;
@@ -158,31 +228,26 @@ button:active {
 }
 
 .hero-content {
-    flex: 1;
-    padding: 20px;
-    color: #333;
     text-align: left;
 }
 
 .hero-content h1 {
-    font-size: 1.8em;
     margin-bottom: 20px;
-    color: #333;
 }
 
-.facilities {
+.fields {
     padding: 40px 20px;
     text-align: center;
     background-color: #f2f1f1;
 }
 
-.facilities h1 {
+.fields h1 {
     font-size: 2.8rem;
     color: #6a0e31;
     margin-bottom: 2rem;
 }
 
-.facilities .facility-card {
+.fields .field-card {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -192,35 +257,37 @@ button:active {
     border-radius: 10px;
     margin-bottom: 20px;
     background-color: beige;
-    max-width: 900px;
+    max-width: 1000px;
+    height: 300px;
     margin-left: auto;
     margin-right: auto;
 }
 
-.facilities .facility-image {
-    width: 40%;
-    max-width: 300px;
-    height: 200px;
+.field-card .field-image {
+    width: 100%;
+    max-width: 400px;
+    height: 260px;
     object-fit: cover;
     border-radius: 10px;
 }
 
-.facilities .facility-info {
+.fields .field-info {
     flex: 1;
     text-align: left;
 }
 
-.facilities .facility-info h2 {
+.fields .field-info h2 {
     font-size: 1.5rem;
     color: #6a0e31;
     margin-bottom: 0.5rem;
 }
 
-.facilities .facility-info p {
+.fields .field-info p {
     margin-bottom: 1rem;
+    font-size: 1.1rem;
 }
 
-.facilities .facility-details {
+.fields .fields-details {
     display: flex;
     justify-content: space-between;
     margin-bottom: 1rem;
@@ -437,34 +504,31 @@ form input:invalid {
     border-left: 3px solid red;
 }
 
-/* Form button */
-form button {
-    width: 100%;
-    padding: 12px;
-    background-color: #6a0e31;
-    color: white;
-    font-weight: bold;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-form button:hover {
-    background-color: #861a43;
-    transform: scale(1.05);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-form button:active {
-    transform: scale(0.98);
-}
-
 /* Placeholder styling */
 form input::placeholder {
     color: #aaa;
     font-size: 0.9rem;
 }
+
+/* Form Button Styling */
+form button {
+    width: 100%;
+}
+
+#next-btn {
+    background-color: #1E90FF; /* Blue color */
+    margin-top: 20px;
+}
+
+#next-btn:hover {
+    background-color: #5dade2; /* Lighter blue on hover */
+}
+
+#next-btn:disabled {
+    background-color: #d3d3d3; /* Gray color when disabled */
+    cursor: not-allowed; /* Disabled state */
+}
+
 
 /* Error messages */
 .form-error {
@@ -648,6 +712,7 @@ form input::placeholder {
 }
 
 .extra-info {
+    margin: 20px;
     font-size: 0.9rem;
     color: #777;
 }
@@ -715,8 +780,8 @@ form input::placeholder {
     text-align: justify;
 }
 
-/* Timetable container */
-.timetable-container {
+/* schedule container */
+.schedule-container {
     text-align: center;
     margin: 30px auto;
     padding: 40px;
@@ -727,8 +792,8 @@ form input::placeholder {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Timetable table */
-.timetable {
+/* schedule table */
+.schedule {
     width: 100%;
     border-collapse: collapse;
     margin: 20px 0;
@@ -736,30 +801,29 @@ form input::placeholder {
     background-color: #fff;
 }
 
-.timetable th {
+.schedule th {
     background-color: #6a0e31;
     color: white;
     font-size: 1.2rem; /* Increased header font size */
 }
 
-/* Timetable alternate row styling */
-.timetable tr:nth-child(even) {
+.schedule tr:nth-child(even) {
     background-color: #f9f9f9; /* Light gray for even rows */
 }
 
-.timetable tr:nth-child(odd) {
+.schedule tr:nth-child(odd) {
     background-color: #ffffff; /* White for odd rows */
 }
 
-/* Timetable header and cell styling */
-.timetable th, .timetable td {
+/* schedule header and cell styling */
+.schedule th, .schedule td {
     padding: 20px 30px; /* Increased padding for better spacing */
     text-align: center; /* Center-align text */
     border: 1px solid #ddd; /* Add borders around cells */
 }
 
 /* Day column styling (left-most column) */
-.timetable td:first-child {
+.schedule td:first-child {
     font-weight: bold;
     color: #6a0e31; /* Highlight day names */
     text-align: left; /* Align day names to the left */

@@ -1,171 +1,157 @@
 document.addEventListener("DOMContentLoaded", () => {
-    highlightNavLinks();
-    addFormValidation();
-    updateNavbar();
-    addSmoothScrolling();
-    addFeedbackFormListener();
+
+    // Page-specific initialization
+    const currentPageDataset = document.body.dataset.page;
+
+    if (currentPageDataset === "login") {
+        initializeTrainerLoginPage();
+    } else if (currentPageDataset === "trainer_dashboard") {
+        initializeTrainerDashboard();
+    }
 });
 
-// Mock user database for testing
-const mockUsers = [
-    { username: "Darrel Steward", password: "ds123" },
-    { username: "John", password: "john12" },
-    { username: "Jessica", password: "password" },
-];
 
-// Highlight the active navigation link
-function highlightNavLinks() {
-    const navLinks = document.querySelectorAll(".nav-links a");
-    const currentPath = window.location.pathname.split("/").pop();
+function initializeTrainerLoginPage() {
+    const loginForm = document.getElementById("login-form");
 
-    navLinks.forEach((link) => {
-        if (link.getAttribute("href") === currentPath) {
-            link.classList.add("active");
-        }
-    });
-}
+    if (!loginForm) return; // Exit if login form is not present on the page
 
-// Add form validation and mock login/signup logic
-function addFormValidation() {
-    // Login form submission
-    document.getElementById("login-form")?.addEventListener("submit", (e) => {
-        e.preventDefault();
-        const username = document.getElementById("username").value.trim();
-        const password = document.getElementById("password").value.trim();
+    // ✅ Handle Trainer Login Submission
+    loginForm.addEventListener("submit", async function (e) {
+        e.preventDefault(); // Prevent default form submission
 
-        // Validate user against the mock database
-        const user = mockUsers.find((user) => user.username === username && user.password === password);
-
-        if (user) {
-            localStorage.setItem("username", user.username); // Store the username
-            window.location.href = "schedule.html"; // Redirect to homepage
-        } else {
-            alert("Invalid username or password.");
-        }
-    });
-
-    // Signup form submission
-    document.getElementById("signup-form")?.addEventListener("submit", (e) => {
-        e.preventDefault();
-        const username = document.getElementById("username").value.trim();
         const email = document.getElementById("email").value.trim();
         const password = document.getElementById("password").value.trim();
 
-        // Check if the username already exists in the mock database
-        const existingUser = mockUsers.find((user) => user.username === username);
-
-        if (existingUser) {
-            alert("Username already exists. Please choose another.");
+        if (!email || !password) {
+            alert("❌ Email and password are required.");
             return;
         }
 
-        if (!username || !email || !password) {
-            alert("All fields are required.");
-            return;
-        }
+        try {
+            const response = await fetch("http://localhost:5001/api/auth/trainer/login", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email, password }),
+            });
 
-        if (password.length < 6) {
-            alert("Password must be at least 6 characters long.");
-            return;
-        }
+            const data = await response.json();
 
-        // Add the new user to the mock database
-        mockUsers.push({ username, password });
-        alert("Account created successfully! You can now log in.");
-        window.location.href = "login.html"; // Redirect to login page
+            if (response.ok) {
+                alert("✅ Login successful!");
+
+                // ✅ Store token & user data in localStorage
+                localStorage.setItem("token", data.token);
+                localStorage.setItem("user", JSON.stringify(data.user));
+
+                // ✅ Redirect to trainer dashboard
+                window.location.href = "trainer_dashboard.html";
+            } else {
+                alert(`❌ Login failed: ${data.message}`);
+            }
+        } catch (error) {
+            console.error("Login Error:", error);
+            alert("❌ Server error! Try again.");
+        }
     });
 }
 
-// Update navbar dynamically based on login state
-function updateNavbar() {
-    const loggedInUser = localStorage.getItem("username");
-    const navButtons = document.querySelector(".nav-buttons");
-    const navProfile = document.querySelector(".nav-profile");
-    const userNameSpan = document.getElementById("user-name");
-    const usernameDisplay = document.getElementById("username-display");
+async function initializeTrainerDashboard() {
+    const scheduleTableBody = document.querySelector("#scheduleTable tbody");
+    const feedbackTableBody = document.querySelector("#feedbackTable tbody");
+    const userNameDisplay = document.getElementById("user-name");
+    const logoutBtn = document.getElementById("logout-btn");
 
-    if (loggedInUser) {
-        navButtons.style.display = "none"; // Hide login/signup buttons
-        navProfile.style.display = "flex"; // Show profile section
-        userNameSpan.textContent = loggedInUser; // Display username in profile
-        usernameDisplay.textContent = loggedInUser; // Display username in the navbar
-    } else {
-        navButtons.style.display = "flex"; // Show login/signup buttons
-        navProfile.style.display = "none"; // Hide profile section
-        usernameDisplay.textContent = "Guest"; // Show 'Guest' when logged out
+    // ✅ Get trainer data from localStorage
+    const trainerData = JSON.parse(localStorage.getItem("user"));
+    if (!trainerData) {
+        alert("❌ Unauthorized! Please log in.");
+        window.location.href = "trainer_login.html"; // Redirect if not logged in
+        return;
     }
 
-    // Logout functionality
-    document.getElementById("logout-btn")?.addEventListener("click", () => {
-        localStorage.removeItem("username"); // Clear logged-in state
-        window.location.reload(); // Reload to update navbar
-    });
-}
+    userNameDisplay.textContent = trainerData.name; // Display trainer name
 
-// Add smooth scrolling for anchor links
-function addSmoothScrolling() {
-    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-        anchor.addEventListener("click", function (e) {
-            e.preventDefault();
-            const targetId = this.getAttribute("href").substring(1);
-            const targetElement = document.getElementById(targetId);
+    // ✅ Fetch Trainer's Schedule
+    async function fetchTrainerSchedule() {
+        try {
+            const response = await fetch("http://localhost:5001/api/trainers/schedule", {
+                method: "GET",
+                headers: { "Authorization": `Bearer ${localStorage.getItem("token")}` },
+            });
 
-            if (targetElement) {
-                window.scrollTo({
-                    top: targetElement.offsetTop,
-                    behavior: "smooth",
-                });
-            }
-        });
-    });
-}
+            const schedule = await response.json();
 
-// Handle feedback form submission
-function addFeedbackFormListener() {
-    const feedbackForm = document.getElementById("feedback-form");
-
-    if (feedbackForm) {
-        feedbackForm.addEventListener("submit", (e) => {
-            e.preventDefault(); // Prevent the default form submission
-
-            const name = document.getElementById("feedback-name").value.trim();
-            const email = document.getElementById("feedback-email").value.trim();
-            const message = document.getElementById("feedback-message").value.trim();
-
-            // Validate inputs
-            if (!name || !email || !message) {
-                alert("Please fill in all fields.");
+            if (!response.ok) {
+                alert("❌ Error fetching schedule.");
                 return;
             }
 
-            // Simulate sending feedback to the backend
-            console.log("Feedback submitted:", { name, email, message });
+            scheduleTableBody.innerHTML = ""; // Clear table before adding new data
 
-            // Show confirmation
-            alert("Thank you for your feedback!");
+            schedule.forEach(entry => {
+                const row = document.createElement("tr");
 
-            // Optionally reset the form
-            feedbackForm.reset();
-        });
+                row.innerHTML = `
+                    <td>${entry.day_of_week}</td>
+                    <td class="${entry.is_available ? "scheduled" : "off-day"}">
+                        ${entry.is_available ? "🏋️ Scheduled" : "🏖 Off Day"}
+                    </td>
+                `;
+
+                scheduleTableBody.appendChild(row);
+            });
+        } catch (error) {
+            console.error("❌ Error loading schedule:", error);
+        }
     }
+
+    // ✅ Fetch Trainer's Approved Feedback
+    async function fetchTrainerFeedback() {
+        try {
+            const response = await fetch("http://localhost:5001/api/trainers/feedback", {
+                method: "GET",
+                headers: { "Authorization": `Bearer ${localStorage.getItem("token")}` },
+            });
+
+            const feedbackData = await response.json();
+
+            if (!response.ok) {
+                alert("❌ Error fetching feedback.");
+                return;
+            }
+
+            feedbackTableBody.innerHTML = ""; // Clear previous feedback
+
+            if (feedbackData.length === 0) {
+                feedbackTableBody.innerHTML = `<tr><td colspan="3">No approved feedback available.</td></tr>`;
+                return;
+            }
+
+            feedbackData.forEach(entry => {
+                const row = document.createElement("tr");
+
+                row.innerHTML = `
+                    <td>${entry.feedback_text}</td>
+                    <td>${new Date(entry.feedback_date).toLocaleDateString()}</td>
+                `;
+
+                feedbackTableBody.appendChild(row);
+            });
+        } catch (error) {
+            console.error("❌ Error loading feedback:", error);
+        }
+    }
+
+    // ✅ Logout Functionality
+    logoutBtn.addEventListener("click", () => {
+        localStorage.removeItem("token");
+        localStorage.removeItem("user");
+        alert("✅ Logged out successfully!");
+        window.location.href = "trainer_login.html"; // Redirect to login
+    });
+
+    // ✅ Initial Fetch
+    fetchTrainerSchedule();
+    fetchTrainerFeedback();
 }
-
-// Check if there's a username stored in localStorage
-const storedUsername = localStorage.getItem('username');
-
-// If a username exists, display it; otherwise, show 'Guest'
-if (storedUsername) {
-  document.getElementById('username-display').textContent = storedUsername;
-} else {
-  document.getElementById('username-display').textContent = 'Guest';
-}
-
-// Logout button functionality
-document.getElementById('logout-btn')?.addEventListener('click', () => {
-  // Clear the username from localStorage upon logout
-  localStorage.removeItem('username');
-  
-  // After clearing, reset the displayed username to 'Guest'
-  document.getElementById('username-display').textContent = 'Guest';
-});
- 

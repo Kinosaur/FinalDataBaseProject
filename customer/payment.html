@@ -32,62 +32,34 @@
             <!-- Left Section: PromptPay QR -->
             <div class="payment-left">
                 <h2 class="section-title">PromptPay QR</h2>
-                <p class="instructions">Please make sure, you follow these:</p>
+                <p class="instructions">Scan and Pay:</p>
                 <div class="promptpay-logo">
                     <img src="../images/promptpay-logo.jpg" alt="PromptPay Logo">
                 </div>
                 <div class="qr-container">
                     <img src="../images/QR.jpg" alt="PromptPay QR Code">
                 </div>
-                <a href="index.html">
-                    <button class="download-btn">
-                        <i class="fa-solid fa-download"></i> Confirm Payment
-                    </button>
-                </a>
+                <button class="pay-btn" id="confirm-payment-btn">
+                    Confirm Payment
+                </button>
                 <p class="extra-info">สแกน QR ด้วยแอป PromptPay QR ที่รองรับ</p>
             </div>
-
+    
             <!-- Right Section: Transaction Details -->
             <div class="payment-right">
                 <h3 class="section-title">Total Amount</h3>
-                <p class="amount">$ 30</p>
+                <p class="amount" id="amount">฿0</p>
                 <h4>Transaction Summary</h4>
-                <p><strong>Invoice Amount:</strong> $ 30</p>
-                <h4>Transaction Details</h4>
-                <table class="transaction-details">
-                    <tr>
-                        <td><strong>Buyer</strong></td>
-                        <td>Jhon Doe (johndoe@gmail.com)</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Seller</strong></td>
-                        <td>Active Heaven Co.Ltd</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Payment ID</strong></td>
-                        <td>chk_cub0pe63gdfnc4365im0</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Service Facilities</strong></td>
-                        <td>Court & Field Rental</td>
-                    </tr>
-                </table>
-                <a href="fill_details.html">
-                    <button class="back-btn">Back to Merchant</button>
+                <p><strong>Invoice Amount:</strong> ฿ <span id="invoice-amount">0</span></p>
+                <h4>Payment Details</h4>
+                <a href="booking_form.html">
+                    <button class="back-btn">Back to Booking-form</button>
                 </a>
             </div>
         </div>
     </div>
-
-    <!-- Type of Facilities
-        <div>
-            <label for="type-facilities">Type of Facilities</label>
-            <select id="type-facilities" name="type_facilities" required>
-                <option value="football-field">Football Field</option>
-                <option value="basketball-court">Basketball Court</option>
-                <option value="tennis-court">Tennis Court</option>
-            </select>
-        </div> -->
+    
+    <script src="script.js"></script>
 
 </body>
 

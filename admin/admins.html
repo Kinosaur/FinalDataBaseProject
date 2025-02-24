@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admins</title>
+    <title>Admin Profile</title>
     <!-- Linking Google fonts for icons -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
@@ -40,21 +40,15 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="bookings.html" class="nav-link" data-page="bookings" title="Bookings">
-                        <span class="nav-icon material-symbols-rounded">folder</span>
-                        <span class="nav-label">Bookings</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="admins.html" class="nav-link" data-page="admins" title="Admin">
-                        <span class="nav-icon material-symbols-rounded">person</span>
-                        <span class="nav-label">Admin</span>
-                    </a>
-                </li>
-                <li class="nav-item">
                     <a href="customers.html" class="nav-link" data-page="customers" title="Customers">
                         <span class="nav-icon material-symbols-rounded">diversity_3</span>
                         <span class="nav-label">Customers</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="payments.html" class="nav-link" data-page="payments" title="Payments">
+                        <span class="nav-icon material-symbols-rounded">payments</span>
+                        <span class="nav-label">Payments</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -70,7 +64,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="feedbacks.html" class="nav-link" data-page="feedbacks" title="Feedbacks">
+                    <a href="feedbacks.html" class="nav-link" data-page="reviews" title="Feedbacks">
                         <span class="nav-icon material-symbols-rounded">star</span>
                         <span class="nav-label">Feedbacks</span>
                     </a>
@@ -80,7 +74,7 @@
             <!-- Secondary Bottom nav -->
             <ul class="nav-list secondary-nav">
                 <li class="nav-item">
-                    <a href="#" class="nav-link" title="Profile">
+                    <a href="admins.html" class="nav-link" title="Profile" data-page="admins">
                         <span class="nav-icon material-symbols-rounded">account_circle</span>
                         <span class="nav-label">Profile</span>
                     </a>
@@ -90,37 +84,39 @@
                         <span class="nav-icon material-symbols-rounded">logout</span>
                         <span class="nav-label">Logout</span>
                     </a>
-                </li>                
+                </li>
             </ul>
         </nav>
     </aside>
 
-    <!-- Main content area -->
-    <div class="main-content">
-        <h1>Admins</h1>
-
-        <!-- Buttons -->
-        <div class="buttons">
-            <button id="addBtn">Add</button>
-            <button id="updateBtn">Update</button>
-            <button id="deleteBtn">Delete</button>
+    <div class="main-content admin-profile-page">
+        <div class="admin-profile-container">
+            <h1>Admin Profile</h1>
+    
+            <!-- Display Current Name and Email -->
+            <p><strong>Current Name:</strong> <span id="current-admin-name">Loading...</span></p>
+            <p><strong>Current Email:</strong> <span id="current-admin-email">Loading...</span></p>
+    
+            <!-- Admin Profile Form -->
+            <form id="adminProfileForm">
+                <label for="admin-name">Name:</label>
+                <input type="text" id="admin-name" required />
+    
+                <label for="admin-email">Email:</label>
+                <input type="email" id="admin-email" required />
+    
+                <label for="admin-phone">Phone:</label>
+                <input type="text" id="admin-phone" required />
+    
+                <label for="admin-password">New Password (Optional):</label>
+                <input type="password" id="admin-password" placeholder="Enter new password" />
+    
+                <button type="submit">Update Profile</button>
+            </form>
         </div>
-
-        <!-- Table -->
-        <table id="adminsTable">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Phone</th>
-                    <th>Email</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Will be populated dynamically -->
-            </tbody>
-        </table>
     </div>
+    
+    
 
     <script src="script.js"></script>
 </body>
