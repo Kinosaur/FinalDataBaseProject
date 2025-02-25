@@ -1,4 +1,4 @@
-# 🏋️‍♂️ ActiveHeaven - Full Stack Web App
+# 🏋️‍♂️ ActiveHeaven - Full Stack Website
 
 ActiveHeaven is a **sports booking management system** that allows users to book fields, manage memberships, schedule trainer sessions, and track payments. This project includes both **frontend (HTML, CSS, JavaScript)** and **backend (Node.js, Express.js, PostgreSQL)**.
 This project is not ready for deployment but can check on localhost://.
