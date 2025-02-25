@@ -75,6 +75,9 @@ npm run dev
 npm start
 ```
 
+## 🐘 Set up databse (PostgreSQL)
+Copy the SQL command from inside backend folder [finalproj_sec544_group4.sql](https://github.com/Kinosaur/FinalDataBaseProject/blob/main/backend/finalproj_sec544_group_4.sql)
+
 ## 🌍 API Endpoints
 
 ### **🛡️ Authentication**
