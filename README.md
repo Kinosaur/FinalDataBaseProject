@@ -35,6 +35,7 @@ This project is divided into three roles: **Admin, Customers, and Trainers**.
 git clone https://github.com/your-username/ActiveHeaven.git](https://github.com/Kinosaur/FinalDataBaseProject.git
 
 cd FinalDataBaseProject
+cd backend
 ```
 
 ### **2️⃣ Install Dependencies**
