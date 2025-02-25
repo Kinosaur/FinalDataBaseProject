@@ -130,10 +130,10 @@ document.getElementById("confirm-payment-btn")?.addEventListener("click", async 
         });
 
         const bookingData = await bookingResponse.json();
-        
+
         // ✅ Find the most recent booking (latest one in the list)
         const latestBooking = bookingData.length > 0 ? bookingData[bookingData.length - 1] : null;
-        
+
         if (!latestBooking) {
             alert("❌ No booking found.");
             return;
@@ -189,7 +189,7 @@ async function populateBookingForm() {
 
         // Get selected field ID from localStorage
         const fieldId = localStorage.getItem("selectedFieldId"); // Assuming field id is stored after clicking "Book Now"
-        
+
         if (!fieldId) {
             alert("❌ Error: No field selected.");
             window.location.href = "index.html"; // Redirect to the index page if no field selected
@@ -482,7 +482,7 @@ async function loadProfileData() {
     const token = localStorage.getItem("token");
     if (!token) {
         alert("❌ Unauthorized! Please log in.");
-        window.location.href = "login.html"; // Redirect to login if not logged in
+        window.location.href = "login.html";
         return;
     }
 
@@ -497,6 +497,49 @@ async function loadProfileData() {
             document.getElementById("customer-name").textContent = data.customer_name;
             document.getElementById("customer-email").textContent = data.customer_email;
             document.getElementById("customer-phone").textContent = data.customer_phone;
+
+            // ✅ Store customer ID for later updates
+            const customerId = data.customer_id;
+
+            document.getElementById("update-profile-form")?.addEventListener("submit", async (e) => {
+                e.preventDefault();
+                
+                const newName = document.getElementById("new-name").value.trim();
+                const newPhone = document.getElementById("new-phone").value.trim();
+
+                const updateData = {};
+                if (newName) updateData.customer_name = newName;
+                if (newPhone) updateData.customer_phone = newPhone;
+
+                if (Object.keys(updateData).length === 0) {
+                    alert("❌ No changes detected.");
+                    return;
+                }
+
+                try {
+                    const updateResponse = await fetch(`http://localhost:5001/api/customers/${customerId}`, {  // ✅ Use customer ID
+                        method: "PUT",
+                        headers: {
+                            "Content-Type": "application/json",
+                            "Authorization": `Bearer ${token}`,
+                        },
+                        body: JSON.stringify(updateData),
+                    });
+
+                    const updateDataRes = await updateResponse.json();
+                    if (updateResponse.ok) {
+                        alert("✅ Profile updated successfully!");
+                        if (newName) document.getElementById("customer-name").textContent = newName;
+                        if (newPhone) document.getElementById("customer-phone").textContent = newPhone;
+                    } else {
+                        alert(`❌ Error updating profile: ${updateDataRes.error}`);
+                    }
+                } catch (error) {
+                    console.error("Error:", error);
+                    alert("❌ Server error. Try again later.");
+                }
+            });
+
         } else {
             alert("❌ Error fetching profile.");
         }
@@ -560,38 +603,6 @@ async function fetchMembership() {
         console.error("Error:", error);
     }
 }
-
-// ✅ Update Customer Profile
-document.getElementById("update-profile-form")?.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    const newPhone = document.getElementById("new-phone").value.trim();
-    if (!newPhone) {
-        alert("❌ Enter a valid phone number.");
-        return;
-    }
-
-    const token = localStorage.getItem("token");
-    try {
-        const response = await fetch("http://localhost:5001/api/customers/update", {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${token}`,
-            },
-            body: JSON.stringify({ customer_phone: newPhone }),
-        });
-
-        const data = await response.json();
-        if (response.ok) {
-            alert("✅ Profile updated successfully!");
-            document.getElementById("customer-phone").textContent = newPhone;
-        } else {
-            alert("❌ Error updating profile.");
-        }
-    } catch (error) {
-        console.error("Error:", error);
-    }
-});
 
 // ✅ Handle Customer Signup
 function setupSignup() {
@@ -673,36 +684,36 @@ async function loadCustomerSchedule() {
 async function feedbackFormReady() {
     document.getElementById("feedback-form").addEventListener("submit", async function (e) {
         e.preventDefault(); // Prevent default form submission
-    
+
         // ✅ Extract customer data from localStorage
         const userData = JSON.parse(localStorage.getItem("user"));
         if (!userData || !userData.id) {
             alert("❌ You must be logged in to submit feedback.");
             return;
         }
-    
+
         const customerId = userData.id; // ✅ Extract correct customer ID
         const feedbackText = document.getElementById("feedback-message").value.trim();
-    
+
         if (!feedbackText) {
             alert("❌ Feedback cannot be empty.");
             return;
         }
-    
+
         const feedbackData = {
             customer_id: customerId,
             feedback_text: feedbackText,
         };
-    
+
         try {
             const response = await fetch("http://localhost:5001/api/feedback", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(feedbackData),
             });
-    
+
             const data = await response.json();
-    
+
             if (response.ok) {
                 alert("✅ Feedback submitted successfully!");
                 document.getElementById("feedback-form").reset();
@@ -713,7 +724,7 @@ async function feedbackFormReady() {
             console.error("❌ Error submitting feedback:", error);
         }
     });
-    
+
 }
 
 // Add smooth scrolling for anchor links

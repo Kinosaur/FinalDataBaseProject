@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Customer Profile</title>
     <link rel="stylesheet" href="style_index.css">
 </head>
+
 <body>
     <!-- Navbar -->
     <nav class="navbar">
@@ -46,12 +48,18 @@
 
         <h2>Update Profile</h2>
         <form id="update-profile-form">
-            <label for="new-phone">Update Phone:</label>
+            <label for="new-name">Update Name (Optional):</label>
+            <input type="text" id="new-name" placeholder="Enter new name">
+
+            <label for="new-phone">Update Phone (Optional):</label>
             <input type="text" id="new-phone" placeholder="Enter new phone number">
+
             <button type="submit">Update</button>
         </form>
+
     </div>
 
     <script src="script.js"></script>
 </body>
+
 </html>

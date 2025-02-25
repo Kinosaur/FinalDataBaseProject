@@ -97,23 +97,30 @@ router.post("/", async (req, res) => {
 router.put("/:id", authMiddleware, async (req, res) => {
     try {
         const { id } = req.params;
-        let { customer_name, customer_email, customer_phone, customer_password } = req.body;
+        let { customer_name, customer_phone } = req.body;
 
-        let updateQuery = "UPDATE Customer SET customer_name = $1, customer_email = $2, customer_phone = $3";
-        let updateValues = [customer_name, customer_email, customer_phone];
-
-        // If password is provided, hash it before updating
-        if (customer_password) {
-            const hashedPassword = await bcrypt.hash(customer_password, 10);
-            updateQuery += ", customer_password = $4";
-            updateValues.push(hashedPassword);
+        // ✅ Build dynamic update query based on provided fields
+        let updateFields = [];
+        let updateValues = [];
+        
+        if (customer_name) {
+            updateFields.push("customer_name = $" + (updateValues.length + 1));
+            updateValues.push(customer_name);
+        }
+        if (customer_phone) {
+            updateFields.push("customer_phone = $" + (updateValues.length + 1));
+            updateValues.push(customer_phone);
         }
 
-        // Append WHERE clause correctly
-        updateQuery += ` WHERE customer_id = $${updateValues.length + 1} RETURNING customer_id, customer_name, customer_email, customer_phone`;
-        updateValues.push(id);
+        if (updateFields.length === 0) {
+            return res.status(400).json({ error: "No changes provided." });
+        }
 
-        // Execute the query
+        // ✅ Add WHERE clause
+        updateValues.push(id);
+        const updateQuery = `UPDATE Customer SET ${updateFields.join(", ")} WHERE customer_id = $${updateValues.length} RETURNING customer_id, customer_name, customer_phone`;
+
+        // ✅ Execute Query
         const result = await pool.query(updateQuery, updateValues);
 
         if (result.rows.length === 0) {
@@ -126,7 +133,6 @@ router.put("/:id", authMiddleware, async (req, res) => {
         res.status(500).json({ error: "Server Error" });
     }
 });
-
 
 // Delete a customer (protected)
 router.delete("/:id", authMiddleware, async (req, res) => {
