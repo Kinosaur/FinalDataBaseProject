@@ -91,11 +91,11 @@ CREATE TABLE Feedback (
 );
 
 CREATE TABLE Trainer_Schedule (
-    schedule_id SERIAL PRIMARY KEY,
-    trainer_id INT NOT NULL,
+    schedule_id SERIAL PRIMARY KEY, -- Unique Schedule ID
+    trainer_id INT NOT NULL, -- Foreign key reference to Trainer
     day_of_week VARCHAR(10) CHECK (day_of_week IN ('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday')) NOT NULL,
     is_available BOOLEAN DEFAULT TRUE,
-    FOREIGN KEY (trainer_id) REFERENCES Trainer(trainer_id) ON DELETE CASCADE
+    FOREIGN KEY (trainer_id) REFERENCES Trainer(trainer_id) ON DELETE CASCADE -- Delete feedback if trainer is deleted
 );
 
 SELECT * FROM Admin;
